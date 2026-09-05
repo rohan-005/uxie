@@ -17,8 +17,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 shadow-2xl shadow-surface-container-lowest/50">
-      <div className="flex justify-between items-center w-full px-6 lg:px-12 max-w-7xl mx-auto h-16">
+    <header className="sticky top-0 z-50 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 shadow-2xl shadow-surface-container-lowest/50 w-full">
+      <div className="flex justify-between items-center w-full px-6 lg:px-12 h-16">
         {/* Brand & Tagline Micro-Badge */}
         <div className="flex items-center gap-3">
           <a
@@ -27,7 +27,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           >
             UXIE
           </a>
-          <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-surface-container border border-outline-variant/40">
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-surface-container border border-outline-variant/40">
             <span className="w-1.5 h-1.5 rounded-sm bg-primary-container inline-block animate-pulse"></span>
             <span className="font-code text-label-code-sm uppercase tracking-wider text-tertiary">
               POWER DECK
@@ -56,16 +56,6 @@ export const Navigation: React.FC<NavigationProps> = ({
             }`}
           >
             Explore
-          </a>
-          <a
-            onClick={handleNav('leaderboard')}
-            className={`cursor-pointer transition-colors font-medium ${
-              activeTab === 'leaderboard'
-                ? 'text-primary border-b-2 border-primary pb-1 font-semibold'
-                : 'text-on-surface-variant hover:text-on-surface hover:text-primary'
-            }`}
-          >
-            Leaderboard
           </a>
         </nav>
 

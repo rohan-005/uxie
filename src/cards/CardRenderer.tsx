@@ -11,7 +11,6 @@ interface CardRendererProps extends CardProps {
 export const CardRenderer: React.FC<CardRendererProps> = ({
   templateId,
   profile,
-  customAvatar,
   className = '',
   isExporting = false,
 }) => {
@@ -20,7 +19,6 @@ export const CardRenderer: React.FC<CardRendererProps> = ({
       return (
         <CardTemplateOne
           profile={profile}
-          customAvatar={customAvatar}
           className={className}
           isExporting={isExporting}
         />
@@ -29,7 +27,6 @@ export const CardRenderer: React.FC<CardRendererProps> = ({
       return (
         <CardTemplateTwo
           profile={profile}
-          customAvatar={customAvatar}
           className={className}
           isExporting={isExporting}
         />
@@ -38,7 +35,6 @@ export const CardRenderer: React.FC<CardRendererProps> = ({
       return (
         <CardTemplateThree
           profile={profile}
-          customAvatar={customAvatar}
           className={className}
           isExporting={isExporting}
         />
@@ -47,7 +43,6 @@ export const CardRenderer: React.FC<CardRendererProps> = ({
       return (
         <CardTemplateOne
           profile={profile}
-          customAvatar={customAvatar}
           className={className}
           isExporting={isExporting}
         />

@@ -12,7 +12,6 @@ export interface CardTemplateInfo {
 
 export interface CardProps {
   profile: PlatformProfile;
-  customAvatar?: string | null;
   className?: string;
   isExporting?: boolean;
 }

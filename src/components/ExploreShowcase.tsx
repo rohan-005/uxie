@@ -129,7 +129,7 @@ export const ExploreShowcase: React.FC<ExploreShowcaseProps> = ({ onSelectDevelo
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 relative z-10">
+    <div className="w-full px-6 lg:px-12 py-10 relative z-10">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-outline-variant/20">
         <div>
@@ -194,8 +194,8 @@ export const ExploreShowcase: React.FC<ExploreShowcaseProps> = ({ onSelectDevelo
         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4 pb-12">
+      {/* Cards Grid - Responsive Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-4 pb-12">
         {filtered.map((prof) => (
           <div
             key={prof.username}

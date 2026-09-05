@@ -1,13 +1,10 @@
 import React from 'react';
 import { PlatformType, PLATFORMS } from './PlatformSelector';
-import { ProfileUploader } from './ProfileUploader';
 
 interface UsernameInputProps {
   platform: PlatformType;
   username: string;
-  customAvatar: string | null;
   onUsernameChange: (username: string) => void;
-  onAvatarChange: (avatar: string | null) => void;
   onBackToPlatform: () => void;
   onSubmit: () => void;
 }
@@ -15,9 +12,7 @@ interface UsernameInputProps {
 export const UsernameInput: React.FC<UsernameInputProps> = ({
   platform,
   username,
-  customAvatar,
   onUsernameChange,
-  onAvatarChange,
   onBackToPlatform,
   onSubmit,
 }) => {
@@ -37,8 +32,8 @@ export const UsernameInput: React.FC<UsernameInputProps> = ({
   };
 
   return (
-    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-12 md:py-16 w-full">
-      <div className="w-full max-w-xl mx-auto">
+    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 lg:px-12 py-12 w-full">
+      <div className="w-full max-w-2xl mx-auto">
         {/* Step Visualizer Indicator */}
         <div className="mb-6 flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
@@ -89,7 +84,7 @@ export const UsernameInput: React.FC<UsernameInputProps> = ({
               WHO ARE YOU?
             </h1>
             <p className="font-body text-body-lg text-on-surface-variant max-w-lg">
-              Enter your {currentPlatformInfo.name} handle to summon your stats and calculate your card power.
+              Enter your {currentPlatformInfo.name} handle to summon public profile telemetry and calculate your card power.
             </p>
           </div>
 
@@ -140,14 +135,8 @@ export const UsernameInput: React.FC<UsernameInputProps> = ({
               ))}
             </div>
 
-            {/* Profile Picture Uploader */}
-            <ProfileUploader
-              customAvatar={customAvatar}
-              onAvatarChange={onAvatarChange}
-            />
-
             {/* CTA Button */}
-            <div className="pt-2">
+            <div className="pt-4">
               <button
                 type="submit"
                 disabled={!username.trim()}

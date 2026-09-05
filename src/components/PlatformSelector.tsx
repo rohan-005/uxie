@@ -59,9 +59,9 @@ export const PlatformSelector: React.FC<PlatformSelectorProps> = ({
 }) => {
   return (
     <div className="flex flex-col items-center w-full">
-      {/* Step Progress Tracker Bar */}
+      {/* Step Progress Tracker Bar - 100% Full Width */}
       <div className="w-full bg-surface-container-lowest/60 border-b border-outline-variant/20 relative z-10 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex items-center justify-between">
+        <div className="w-full px-6 lg:px-12 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4 font-code text-label-code-sm">
             <span className="text-primary font-bold flex items-center gap-1.5">
               <span className="w-4 h-4 rounded bg-primary-container text-on-primary-container flex items-center justify-center text-[10px]">1</span>
@@ -87,10 +87,10 @@ export const PlatformSelector: React.FC<PlatformSelectorProps> = ({
         </div>
       </div>
 
-      {/* Main Container */}
-      <div className="max-w-7xl w-full mx-auto px-6 lg:px-12 py-10 lg:py-16 relative z-10 flex flex-col justify-center">
+      {/* Main Full-Width Grid Container */}
+      <div className="w-full px-6 lg:px-12 py-10 lg:py-16 relative z-10 flex flex-col justify-center">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-surface-container-low border border-primary-container/30 text-primary font-code text-label-code-sm uppercase tracking-wider mb-4 shadow-sm">
             <span className="material-symbols-outlined text-[14px]">swords</span>
             CHOOSE YOUR BATTLEGROUND
@@ -103,8 +103,8 @@ export const PlatformSelector: React.FC<PlatformSelectorProps> = ({
           </p>
         </div>
 
-        {/* Grid of Platform Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto w-full">
+        {/* Grid of Platform Cards - Full Width Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 w-full">
           {PLATFORMS.map((platform) => {
             const isSelected = selectedPlatform === platform.id;
             return (

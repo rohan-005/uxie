@@ -8,7 +8,6 @@ import { StatsGrid } from './StatsGrid';
 
 interface PowerRevealProps {
   profile: PlatformProfile;
-  customAvatar: string | null;
   selectedTemplate: CardTemplateId;
   onSelectTemplate: (templateId: CardTemplateId) => void;
   onReset: () => void;
@@ -16,15 +15,14 @@ interface PowerRevealProps {
 
 export const PowerReveal: React.FC<PowerRevealProps> = ({
   profile,
-  customAvatar,
   selectedTemplate,
   onSelectTemplate,
   onReset,
 }) => {
   return (
-    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-12 py-10 max-w-7xl mx-auto w-full">
+    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 lg:px-12 py-10 w-full">
       {/* Announcement Banner */}
-      <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+      <div className="text-center max-w-3xl mx-auto mb-10 space-y-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-surface-container-lowest border border-outline-variant/50 shadow-inner">
           <span className="material-symbols-outlined text-primary text-[16px]">verified</span>
           <span className="font-code text-label-code-sm text-primary uppercase tracking-widest">
@@ -44,15 +42,14 @@ export const PowerReveal: React.FC<PowerRevealProps> = ({
         </p>
       </div>
 
-      {/* Main Grid: Card Preview on Left, Selector & Actions on Right */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start justify-center">
-        {/* Left Column: Live Card Canvas */}
+      {/* Main Grid: Card Preview on Left, Selector & Actions on Right - Full Width 12 Columns */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-start justify-center">
+        {/* Left Column: Live Card Canvas (6 cols) */}
         <div className="lg:col-span-6 flex flex-col items-center justify-center">
           <div className="w-full flex justify-center transform transition-transform duration-300 hover:scale-[1.01]">
             <CardRenderer
               templateId={selectedTemplate}
               profile={profile}
-              customAvatar={customAvatar}
             />
           </div>
           <p className="font-code text-label-code-sm text-on-surface-variant mt-4 flex items-center gap-2">
@@ -61,7 +58,7 @@ export const PowerReveal: React.FC<PowerRevealProps> = ({
           </p>
         </div>
 
-        {/* Right Column: Template Selector, Actions & Stats */}
+        {/* Right Column: Template Selector, Actions & Stats (6 cols) */}
         <div className="lg:col-span-6 flex flex-col gap-6 w-full">
           {/* Card Selector */}
           <div className="bg-surface-container/60 backdrop-blur-md border border-outline-variant/40 rounded-xl p-6 shadow-xl">
@@ -75,7 +72,7 @@ export const PowerReveal: React.FC<PowerRevealProps> = ({
           <div className="bg-surface-container/60 backdrop-blur-md border border-outline-variant/40 rounded-xl p-6 shadow-xl">
             <h2 className="font-headline text-headline-md text-on-surface flex items-center gap-2 mb-4">
               <span className="material-symbols-outlined text-primary">share</span>
-              Card Export &amp; Share Actions
+              Card Deployment &amp; Export
             </h2>
             <CardActions profile={profile} selectedTemplate={selectedTemplate} />
           </div>
