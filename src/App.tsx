@@ -19,7 +19,8 @@ export default function App() {
 
   const [selectedPlatform, setSelectedPlatform] = useState<PlatformType>('github');
   const [username, setUsername] = useState<string>('torvalds');
-  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplateId>('template1');
+  // Default to template2 (F1 Card with f1card.png background)
+  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplateId>('template2');
 
   const [generatedProfile, setGeneratedProfile] = useState<PlatformProfile | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
