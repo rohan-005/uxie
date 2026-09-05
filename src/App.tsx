@@ -1,44 +1,194 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { LandingHero } from './components/LandingHero';
+import { PlatformSelector, PlatformType } from './components/PlatformSelector';
+import { UsernameInput } from './components/UsernameInput';
+import { GenerationLoader } from './components/GenerationLoader';
+import { PowerReveal } from './components/PowerReveal';
+import { ExploreShowcase } from './components/ExploreShowcase';
+
+import { CardTemplateId } from './types/card';
+import { PlatformProfile } from './types/profile';
+import { fetchPlatformProfile } from './platforms/PlatformAdapter';
+import { loadSavedUserState, saveUserState } from './utils/storage';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('landing');
+  const [step, setStep] = useState<'platform' | 'username' | 'loading' | 'reveal'>('platform');
+
+  const [selectedPlatform, setSelectedPlatform] = useState<PlatformType>('github');
+  const [username, setUsername] = useState<string>('torvalds');
+  const [customAvatar, setCustomAvatar] = useState<string | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplateId>('template1');
+
+  const [generatedProfile, setGeneratedProfile] = useState<PlatformProfile | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Initialize saved state from localStorage
+  useEffect(() => {
+    const saved = loadSavedUserState();
+    if (saved) {
+      if (saved.selectedPlatform) setSelectedPlatform(saved.selectedPlatform);
+      if (saved.username) setUsername(saved.username);
+      if (saved.customAvatar) setCustomAvatar(saved.customAvatar);
+      if (saved.selectedTemplate) setSelectedTemplate(saved.selectedTemplate);
+      if (saved.lastGeneratedProfile) setGeneratedProfile(saved.lastGeneratedProfile);
+    }
+
+    // Parse URL query params if present
+    const params = new URLSearchParams(window.location.search);
+    const urlPlatform = params.get('platform') as PlatformType;
+    const urlUsername = params.get('username');
+    const urlTemplate = params.get('template') as CardTemplateId;
+
+    if (urlPlatform) setSelectedPlatform(urlPlatform);
+    if (urlUsername) setUsername(urlUsername);
+    if (urlTemplate) setSelectedTemplate(urlTemplate);
+
+    if (urlPlatform && urlUsername) {
+      handleFetchAndGenerate(urlPlatform, urlUsername);
+    }
+  }, []);
+
+  const handleFetchAndGenerate = async (p: PlatformType, u: string) => {
+    setErrorMessage(null);
+    setStep('loading');
+    setCurrentTab('create');
+
+    try {
+      const profile = await fetchPlatformProfile(p, u);
+      setGeneratedProfile(profile);
+      saveUserState({
+        selectedPlatform: p,
+        username: u,
+        customAvatar,
+        selectedTemplate,
+        lastGeneratedProfile: profile,
+      });
+    } catch (err: any) {
+      console.warn('Failed to fetch live profile, attempting fallback:', err);
+      setErrorMessage(err?.message || 'Profile telemetry lookup failed. Using fallback data.');
+      try {
+        const fallbackProfile = await fetchPlatformProfile(p, u, true);
+        setGeneratedProfile(fallbackProfile);
+      } catch (fallbackErr) {
+        setErrorMessage('Unable to load profile data. Please try another handle.');
+        setStep('username');
+      }
+    }
+  };
+
+  const handleLoaderComplete = () => {
+    setStep('reveal');
+  };
+
+  const handleSelectDeveloper = (p: PlatformType, u: string) => {
+    setSelectedPlatform(p);
+    setUsername(u);
+    handleFetchAndGenerate(p, u);
+  };
 
   return (
-    <div className="min-h-screen bg-background text-on-background flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container">
+    <div className="min-h-screen bg-background text-on-background flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container relative">
       <Navigation
         activeTab={currentTab}
-        onNavigate={(tab) => setCurrentTab(tab)}
+        onNavigate={(tab) => {
+          setCurrentTab(tab);
+          if (tab === 'create' && step === 'reveal' && !generatedProfile) {
+            setStep('platform');
+          }
+        }}
       />
 
-      <main className="flex-grow">
+      {/* Global Error Toast */}
+      {errorMessage && (
+        <div className="sticky top-16 z-40 bg-error-container/90 border-b border-error text-on-error-container px-6 py-2.5 font-code text-label-code-sm flex items-center justify-between backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[18px]">warning</span>
+            <span>{errorMessage}</span>
+          </div>
+          <button
+            onClick={() => setErrorMessage(null)}
+            className="font-bold hover:underline ml-4"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+
+      <main className="flex-grow flex flex-col">
+        {/* Landing Tab */}
         {currentTab === 'landing' && (
           <LandingHero
-            onStartClick={() => setCurrentTab('create')}
+            onStartClick={() => {
+              setCurrentTab('create');
+              setStep('platform');
+            }}
             onExploreClick={() => setCurrentTab('explore')}
           />
         )}
+
+        {/* Create Card Flow */}
         {currentTab === 'create' && (
-          <div className="max-w-7xl mx-auto px-6 py-12">
-            <h2 className="font-headline text-headline-lg font-bold text-tertiary-fixed mb-4">
-              Select Your Platform &amp; Build Card
-            </h2>
-            <p className="text-on-surface-variant font-body">
-              Platform selection flow coming up...
-            </p>
+          <div className="flex-1 flex flex-col">
+            {step === 'platform' && (
+              <PlatformSelector
+                selectedPlatform={selectedPlatform}
+                onSelectPlatform={(p) => {
+                  setSelectedPlatform(p);
+                  saveUserState({ selectedPlatform: p });
+                }}
+                onContinue={() => setStep('username')}
+              />
+            )}
+
+            {step === 'username' && (
+              <UsernameInput
+                platform={selectedPlatform}
+                username={username}
+                customAvatar={customAvatar}
+                onUsernameChange={(u) => {
+                  setUsername(u);
+                  saveUserState({ username: u });
+                }}
+                onAvatarChange={(avatar) => {
+                  setCustomAvatar(avatar);
+                  saveUserState({ customAvatar: avatar });
+                }}
+                onBackToPlatform={() => setStep('platform')}
+                onSubmit={() => handleFetchAndGenerate(selectedPlatform, username)}
+              />
+            )}
+
+            {step === 'loading' && (
+              <GenerationLoader
+                platform={selectedPlatform}
+                username={username}
+                onComplete={handleLoaderComplete}
+              />
+            )}
+
+            {step === 'reveal' && generatedProfile && (
+              <PowerReveal
+                profile={generatedProfile}
+                customAvatar={customAvatar}
+                selectedTemplate={selectedTemplate}
+                onSelectTemplate={(tmpl) => {
+                  setSelectedTemplate(tmpl);
+                  saveUserState({ selectedTemplate: tmpl });
+                }}
+                onReset={() => {
+                  setStep('platform');
+                }}
+              />
+            )}
           </div>
         )}
+
+        {/* Explore Showcase Gallery */}
         {currentTab === 'explore' && (
-          <div className="max-w-7xl mx-auto px-6 py-12">
-            <h2 className="font-headline text-headline-lg font-bold text-tertiary-fixed mb-4">
-              Explore Power Cards Showcase
-            </h2>
-            <p className="text-on-surface-variant font-body">
-              Showcase gallery coming up...
-            </p>
-          </div>
+          <ExploreShowcase onSelectDeveloper={handleSelectDeveloper} />
         )}
       </main>
 
