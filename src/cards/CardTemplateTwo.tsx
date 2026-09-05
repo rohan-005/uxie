@@ -1,127 +1,117 @@
 import React from 'react';
 import { CardProps } from '../types/card';
-import { RARITY_CONFIGS } from '../engine/rarity';
-import { DemoDataBadge } from '../components/Badge';
 
 export const CardTemplateTwo: React.FC<CardProps> = ({
   profile,
   className = '',
 }) => {
-  const rarityConfig = RARITY_CONFIGS[profile.rarity];
   const displayAvatar = profile.avatar || '/f1.jpeg';
-
-  const statList = [
-    profile.stats.stat1,
-    profile.stats.stat2,
-    profile.stats.stat3,
-    profile.stats.stat4,
-    profile.stats.stat5,
-    profile.stats.stat6,
-  ];
 
   return (
     <div
       id="uxie-card-export-target"
-      className={`relative w-full max-w-[420px] aspect-[1/1.54] rounded-3xl bg-[#120d18] border-8 border-slate-700/80 shadow-[0_30px_70px_-10px_rgba(0,0,0,0.95),0_0_40px_rgba(255,176,202,0.25)] p-5 flex flex-col justify-between overflow-hidden group select-none ${className}`}
+      className={`card-container relative w-full max-w-[360px] select-none ${className}`}
     >
-      {/* Protective Glass Slab Bevel Inset */}
-      <div className="absolute inset-0 rounded-2xl border-2 border-white/20 pointer-events-none m-1"></div>
-      <div className="absolute inset-0 foil-overlay pointer-events-none rounded-2xl"></div>
+      <div className="psa-slab-frame bg-slate-900/80 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 border-2 border-white/30 relative">
+        <div className="absolute inset-1.5 rounded-xl border border-white/20 pointer-events-none"></div>
 
-      {/* Slab Top Grading Header */}
-      <div className="relative z-10 bg-slate-900/90 border border-slate-600 rounded-xl p-3 flex items-center justify-between shadow-inner">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center border border-primary-container/50 text-primary">
-            <span className="material-symbols-outlined text-[20px]">verified</span>
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-code text-label-code-sm text-primary-container font-bold tracking-wider uppercase">
-                {profile.rarity} GRADED SLAB
-              </span>
-              <DemoDataBadge isDemoData={profile.isDemoData} />
+        {/* Top White PSA Certificate Label */}
+        <div className="relative z-10 bg-white rounded-lg p-2.5 mb-2.5 border-2 border-red-600 shadow-md flex flex-col justify-between">
+          <div className="flex items-start justify-between">
+            <div className="text-[10px] font-code font-black text-slate-950 leading-tight space-y-0.5">
+              <div className="flex justify-between w-full">
+                <span className="tracking-wide uppercase">2026 TOPPS CHROME F1 DEV</span>
+                <span className="text-slate-700 pl-2">#001</span>
+              </div>
+              <div className="text-slate-900 font-black tracking-tight uppercase text-xs">
+                {profile.displayName}
+              </div>
+              <div className="text-red-600 font-extrabold text-[9px] uppercase">
+                SAPPHIRE ED - RED // {profile.rankTitle}
+              </div>
             </div>
-            <span className="font-code text-[10px] text-slate-400 tracking-wider block">
-              UXIE SLAB SPEC // SERIES 01 #0492
+            <div className="text-right flex flex-col items-end pl-2 border-l border-slate-300">
+              <div className="text-[11px] font-code font-black text-red-600 leading-none">GEM MT</div>
+              <div className="text-[22px] font-code font-black text-slate-950 leading-tight">10</div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between mt-1 pt-1 border-t border-slate-300">
+            {/* Barcode representation */}
+            <div className="flex items-center gap-0.5 h-3 opacity-90">
+              <div className="w-0.5 h-full bg-slate-900"></div>
+              <div className="w-1 h-full bg-slate-900"></div>
+              <div className="w-0.5 h-full bg-slate-900"></div>
+              <div className="w-1 h-full bg-slate-900"></div>
+              <div className="w-1.5 h-full bg-slate-900"></div>
+              <div className="w-0.5 h-full bg-slate-900"></div>
+              <div className="w-1 h-full bg-slate-900"></div>
+              <div className="w-0.5 h-full bg-slate-900"></div>
+              <div className="w-1 h-full bg-slate-900"></div>
+            </div>
+            <span className="font-code text-[9px] font-extrabold text-slate-800 tracking-wider">
+              Cert #65997447
             </span>
+            <div className="psa-holo-seal px-1.5 py-0.5 rounded-full border border-amber-300 text-[8px] font-code font-black text-amber-950 uppercase">
+              PSA
+            </div>
           </div>
         </div>
-        <div className="px-3 py-1 rounded-lg bg-primary-container/20 border border-primary-container/60 text-right">
-          <div className="font-stat-counter text-xl font-bold text-tertiary-fixed leading-none">
-            {profile.overallPower}
+
+        {/* Ruby Red / Gold Sapphire Refractor Card */}
+        <div className="ruby-sapphire-refractor rounded-xl p-2.5 border-2 border-amber-300/60 relative overflow-hidden shadow-2xl aspect-[1/1.42] flex flex-col justify-between">
+          <div className="hologram-prism absolute -inset-full pointer-events-none opacity-85"></div>
+
+          {/* Card Top Meta */}
+          <div className="relative z-10 flex items-center justify-between">
+            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur border border-amber-300/50">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+              <span className="font-code text-[9px] font-black tracking-widest text-amber-300 uppercase">
+                SAPPHIRE 1/1
+              </span>
+            </div>
+            <div className="px-2 py-0.5 rounded bg-gradient-to-r from-amber-400 via-white to-amber-200 text-slate-950 font-headline font-black italic tracking-wider text-[11px] shadow border border-white">
+              TOPPS <span className="text-red-700">CHROME</span>
+            </div>
           </div>
-          <div className="font-code text-[9px] text-primary uppercase font-semibold">POWER</div>
-        </div>
-      </div>
 
-      {/* Inner Card Frame with Crystalline Geometric Pattern */}
-      <div className="relative z-10 my-3 rounded-xl border border-outline-variant/40 bg-gradient-to-br from-indigo-950/80 via-purple-950/80 to-pink-950/80 p-3.5 flex flex-col justify-between flex-grow overflow-hidden">
-        {/* Geometric Background Layer */}
-        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(#de739c_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-
-        <div className="relative z-10 flex items-center justify-between gap-3 mb-3">
-          <div className="flex items-center gap-3">
-            <div className="relative w-16 h-16 rounded-xl overflow-hidden border-2 border-primary-container shadow-lg">
+          {/* Central Portrait Area with Vertical Ribbon */}
+          <div className="relative z-10 my-auto flex gap-2 items-center h-[230px]">
+            <div className="w-7 h-full bg-gradient-to-b from-amber-300 via-red-500 to-amber-400 rounded flex flex-col items-center justify-center p-0.5 border border-white/60 shadow-lg">
+              <span className="font-headline font-black text-slate-950 text-[10px] tracking-[0.18em] uppercase -rotate-90 whitespace-nowrap drop-shadow-sm">
+                GRAND PRIX WINNER // {profile.platform.toUpperCase()}
+              </span>
+            </div>
+            <div className="flex-1 h-full rounded-lg overflow-hidden border-2 border-white/50 relative shadow-inner bg-slate-950">
               <img
                 src={displayAvatar}
                 alt={profile.displayName}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top filter contrast-[1.15] saturate-[1.12]"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/f1.jpeg';
                 }}
               />
+              <div className="absolute bottom-1.5 right-1.5 px-2 py-0.5 bg-black/85 backdrop-blur rounded text-[9.5px] font-code font-bold text-amber-300 border border-amber-400/50">
+                P1 VICTORY
+              </div>
             </div>
+          </div>
+
+          {/* Bottom Specs Box */}
+          <div className="relative z-10 bg-slate-950/85 backdrop-blur rounded-lg p-1.5 border border-white/30 flex items-center justify-between text-xs font-code shadow-md">
             <div>
-              <h3 className="font-headline text-xl font-bold text-tertiary-fixed leading-tight">
-                {profile.displayName}
-              </h3>
-              <p className="font-code text-label-code-sm text-primary font-semibold">
-                @{profile.username}
-              </p>
-              <span className="inline-block mt-0.5 font-code text-[10px] text-slate-300 uppercase tracking-wider">
-                {profile.rankTitle}
-              </span>
-            </div>
-          </div>
-
-          <div className={`px-2.5 py-1 rounded-lg border font-code text-[11px] font-bold ${rarityConfig.badgeBg} ${rarityConfig.badgeText} ${rarityConfig.borderColor}`}>
-            {profile.rarity}
-          </div>
-        </div>
-
-        {/* 6 Stats Mini Grid */}
-        <div className="relative z-10 grid grid-cols-2 gap-2 pt-2 border-t border-white/20">
-          {statList.map((st, i) => (
-            <div
-              key={i}
-              className="p-1.5 rounded-md bg-slate-900/80 border border-slate-700 flex flex-col justify-between"
-            >
-              <div className="flex justify-between items-center text-[10px] font-code">
-                <span className="text-slate-300 font-medium truncate">{st.label}</span>
-                <span className="font-bold text-tertiary-fixed">{st.value}</span>
-              </div>
-              <div className="h-1.5 w-full bg-slate-950 rounded-sm overflow-hidden border border-slate-800 mt-1">
-                <div
-                  style={{ width: `${Math.max(5, Math.min(100, st.value))}%` }}
-                  className="h-full bg-gradient-to-r from-secondary-container to-primary-container rounded-sm"
-                ></div>
+              <div className="text-[8.5px] text-amber-300/80 font-mono uppercase">POWERTRAIN</div>
+              <div className="text-white font-black text-[10.5px] tracking-wide uppercase">
+                {profile.overallPower} OVR TELEMETRY
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Card Footer Metallic Seal */}
-      <div className="relative z-10 flex items-center justify-between pt-2 border-t border-slate-700 text-[10px] font-code text-slate-400">
-        <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-sm bg-primary-container"></span>
-          <span className="uppercase tracking-wider font-semibold">
-            PROTECTIVE SLAB CASE
-          </span>
-        </div>
-        <div className="flex items-center gap-1 text-primary">
-          <span className="font-bold tracking-widest uppercase">GRADED #0492</span>
-          <span className="material-symbols-outlined text-[12px]">auto_awesome</span>
+            <div className="text-right">
+              <div className="text-[8.5px] text-amber-300/80 font-mono uppercase">CERTIFIED</div>
+              <div className="text-amber-300 font-black text-[10.5px] tracking-wider">
+                PSA 10 GEM MINT
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

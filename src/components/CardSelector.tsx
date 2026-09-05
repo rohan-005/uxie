@@ -5,23 +5,23 @@ export const CARD_TEMPLATES: CardTemplateInfo[] = [
   {
     id: 'template1',
     name: 'CARD 01',
-    subtitle: 'Graded Collectible Slab',
-    description: 'Tall portrait glass slab casing with metallic frame, slab grade header, vertical title, and complete 6-stat telemetry grid.',
-    badge: 'GRADED SLAB',
+    subtitle: 'FIFA TOTY Shield',
+    description: 'Custom clip-path shield geometry, lapis crystal background, gold foil typography & borders, and 6 stat metrics.',
+    badge: 'FIFA TOTY SHIELD',
   },
   {
     id: 'template2',
     name: 'CARD 02',
-    subtitle: 'Competitive Gaming Shield',
-    description: 'Futuristic shield contour with massive numerical overall power top left, central profile avatar, and gaming stat meters.',
-    badge: 'GAMING SHIELD',
+    subtitle: 'Topps Chrome F1 PSA 10 Slab',
+    description: 'Acrylic slab frame with bevels, white top PSA grading label (GEM MT 10), and ruby red/sapphire refractor inner card.',
+    badge: 'PSA 10 GEM MINT SLAB',
   },
   {
     id: 'template3',
     name: 'CARD 03',
-    subtitle: 'Dark Premium Sports Collectible',
-    description: 'High-contrast obsidian dark aesthetic, bold vertical headline typography, metallic accents, and high-impact stat highlights.',
-    badge: 'DARK PREMIUM',
+    subtitle: '90s Upper Deck Vintage',
+    description: 'Teal & orange vintage sports trading card frame, Upper Deck diamond logo, vertical player name tag, and #23 badge.',
+    badge: '90S UPPER DECK',
   },
 ];
 
@@ -40,7 +40,7 @@ export const CardSelector: React.FC<CardSelectorProps> = ({
         SELECT CARD TEMPLATE
       </label>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {CARD_TEMPLATES.map((tmpl) => {
           const isSelected = selectedTemplate === tmpl.id;
           return (

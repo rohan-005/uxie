@@ -1,112 +1,75 @@
 import React from 'react';
 import { CardProps } from '../types/card';
-import { RARITY_CONFIGS } from '../engine/rarity';
-import { DemoDataBadge } from '../components/Badge';
 
 export const CardTemplateThree: React.FC<CardProps> = ({
   profile,
   className = '',
 }) => {
-  const rarityConfig = RARITY_CONFIGS[profile.rarity];
   const displayAvatar = profile.avatar || '/nba1.webp';
-
-  const statList = [
-    profile.stats.stat1,
-    profile.stats.stat2,
-    profile.stats.stat3,
-    profile.stats.stat4,
-    profile.stats.stat5,
-    profile.stats.stat6,
-  ];
 
   return (
     <div
       id="uxie-card-export-target"
-      className={`relative w-full max-w-[420px] aspect-[1/1.54] rounded-3xl bg-[#08050c] border-2 border-primary-container/80 shadow-[0_30px_70px_-10px_rgba(0,0,0,1),0_0_40px_rgba(222,115,156,0.35)] p-6 flex flex-col justify-between overflow-hidden group select-none ${className}`}
+      className={`card-container relative w-full max-w-[360px] select-none ${className}`}
     >
-      {/* Dark Obsidian & Metallic Accents */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-primary-container/20 via-secondary-container/10 to-transparent blur-2xl pointer-events-none"></div>
-      <div className="absolute inset-0 foil-overlay pointer-events-none rounded-2xl"></div>
+      <div className="bg-[#128a8c] rounded-2xl p-3 border-[5px] border-[#087779] shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative aspect-[1/1.48] flex flex-col justify-between overflow-hidden">
+        {/* Side Rail Stripes */}
+        <div className="absolute top-0 left-0 w-2 h-full bg-[#0a585a] opacity-80 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-2 h-full bg-[#0a585a] opacity-80 pointer-events-none"></div>
 
-      {/* Top Header: Vertical Identity & Metallic Badge */}
-      <div className="relative z-10 flex items-start justify-between border-b border-outline-variant/40 pb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-2.5 h-12 bg-gradient-to-b from-secondary to-primary-container rounded-sm shadow-[0_0_12px_#de739c]"></div>
-          <div>
-            <h2 className="font-headline text-2xl font-bold tracking-tight text-white uppercase leading-none">
-              {profile.displayName}
-            </h2>
-            <div className="flex items-center gap-2 mt-1">
-              <span className="font-code text-label-code-sm text-primary font-bold tracking-widest uppercase">
-                @{profile.username}
-              </span>
-              <span className="text-outline text-xs">•</span>
-              <span className="font-code text-[11px] text-tertiary-fixed font-semibold uppercase">
-                {profile.platform}
+        {/* Inner Orange Frame Box */}
+        <div className="relative z-10 w-full h-full flex flex-col justify-between border-2 border-[#ea580c] p-2 bg-[#0e6f71] rounded-lg">
+          {/* Top Diamond Header */}
+          <div className="flex items-center justify-between">
+            <div className="px-2 py-0.5 bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 border border-amber-100 rounded-sm text-slate-950 font-serif font-black text-[11px] tracking-tight shadow flex items-center gap-1">
+              <span className="material-symbols-outlined text-[13px]">diamond</span> UPPER D•E•C•K
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-amber-300 text-[16px]">sports_basketball</span>
+              <span className="font-code text-[9.5px] text-amber-200 uppercase tracking-widest font-extrabold bg-teal-950/80 px-1.5 py-0.5 rounded border border-teal-400/30">
+                VINTAGE EDITION
               </span>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col items-end gap-1.5">
-          <div className={`px-3 py-1 rounded border font-code text-label-code-sm font-bold tracking-wider uppercase ${rarityConfig.badgeBg} ${rarityConfig.badgeText} ${rarityConfig.borderColor}`}>
-            {profile.rarity}
-          </div>
-          <DemoDataBadge isDemoData={profile.isDemoData} />
-        </div>
-      </div>
-
-      {/* Central High-Contrast Character Portrait */}
-      <div className="relative z-10 my-4 flex items-center justify-between gap-4 flex-grow">
-        {/* Left Side: Massive Power Score */}
-        <div className="flex flex-col justify-center">
-          <span className="font-code text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">
-            UXIE POWER
-          </span>
-          <span className="font-stat-counter text-5xl sm:text-6xl font-bold text-tertiary-fixed tracking-tighter leading-none drop-shadow-[0_0_20px_rgba(222,115,156,0.4)]">
-            {profile.overallPower}
-          </span>
-          <span className="font-code text-[10px] text-primary uppercase tracking-widest font-semibold mt-1">
-            {profile.rankTitle}
-          </span>
-        </div>
-
-        {/* Right Side: High-Contrast Avatar Frame */}
-        <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-primary-container shadow-[0_0_30px_rgba(222,115,156,0.35)] bg-[#040206] p-1">
-          <img
-            src={displayAvatar}
-            alt={profile.displayName}
-            className="w-full h-full object-cover rounded-xl filter contrast-110 saturate-110"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = '/nba1.webp';
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none"></div>
-        </div>
-      </div>
-
-      {/* Stat Section: Minimalist Metallic Bars */}
-      <div className="relative z-10 space-y-2 p-3.5 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-code text-label-code-sm">
-          {statList.slice(0, 6).map((st, i) => (
-            <div key={i} className="flex justify-between items-center border-b border-outline-variant/20 pb-1">
-              <span className="text-on-surface-variant text-[11px] uppercase tracking-wider font-semibold truncate">
-                {st.label}
+          {/* Central Vintage Action Photo Frame */}
+          <div className="relative mx-auto w-full my-1.5 flex-1 rounded border-2 border-orange-500 overflow-hidden shadow-2xl bg-black min-h-[200px]">
+            <img
+              src={displayAvatar}
+              alt={profile.displayName}
+              className="w-full h-full object-cover filter contrast-[1.08] saturate-[1.05]"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/nba1.webp';
+              }}
+            />
+            {/* Vertical Name Tag Overlay */}
+            <div className="absolute top-2 right-2 px-1.5 py-3 rounded bg-black/75 border border-amber-400/40 shadow flex items-center justify-center">
+              <span className="font-headline font-black text-[10px] tracking-widest text-amber-300 uppercase -rotate-90 whitespace-nowrap">
+                MICHAEL {profile.username.toUpperCase()}
               </span>
-              <span className="font-bold text-tertiary-fixed">{st.value}</span>
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-blue-900/90 text-white font-headline text-[11px] font-black tracking-widest uppercase border border-amber-300 shadow-xl whitespace-nowrap">
+              DATA DUNK
+            </div>
+          </div>
 
-      {/* Footer Signature Strip */}
-      <div className="relative z-10 flex items-center justify-between pt-3 mt-2 border-t border-outline-variant/40 font-code text-[10px] text-on-surface-variant">
-        <span className="uppercase tracking-widest text-primary font-bold">
-          DARK PREMIUM COLLECTIBLE
-        </span>
-        <span className="text-tertiary font-bold tracking-wider">
-          SERIES 01 // ID #0492
-        </span>
+          {/* Player Banner */}
+          <div className="bg-[#ea580c] text-slate-950 px-2.5 py-1 rounded font-headline font-black tracking-wider text-[11.5px] flex items-center justify-between uppercase shadow border border-amber-200">
+            <span className="truncate pr-1 font-bold">
+              {profile.displayName.toUpperCase()}
+            </span>
+            <span className="text-[10px] bg-slate-950 text-amber-400 px-1 py-0.5 rounded font-code font-bold shrink-0">
+              #23
+            </span>
+          </div>
+
+          {/* Footer Quote */}
+          <div className="pt-1 text-center">
+            <p className="font-code text-[9.5px] gold-foil-text font-bold tracking-tight">
+              1991-2026 All-Time Legend: Public profile telemetry &amp; world-record commits.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
