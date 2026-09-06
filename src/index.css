@@ -4,23 +4,36 @@
 
 @layer base {
   body {
-    background-color: #17111d;
-    color: #ebdef0;
+    background-color: #130b17;
+    color: #eddeef;
+    font-family: 'Geist', sans-serif;
   }
 }
 
-/* Custom scrollbars */
+/* Material Symbols Icon Configuration */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #17111d;
+  background: #130b17;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #393240;
+  background: #3b323f;
   border-radius: 4px;
 }
 
@@ -28,77 +41,89 @@
   background: #de739c;
 }
 
-.material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+/* Architectural Atmospheric Background Mesh */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, rgba(84, 66, 71, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(84, 66, 71, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.bg-grid-matrix {
-  background-image: radial-gradient(rgba(222, 115, 156, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+/* Holographic / Telemetry Sheen Custom Styles */
+.holographic-sheen {
+  background: linear-gradient(135deg, rgba(222, 115, 156, 0.15) 0%, rgba(123, 82, 123, 0.25) 50%, rgba(246, 238, 197, 0.1) 100%);
 }
 
-/* Hologram Rainbow & Prism Shimmers */
-.hologram-prism {
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    rgba(255, 176, 202, 0.15) 25%,
-    rgba(235, 227, 187, 0.28) 45%,
-    rgba(100, 200, 255, 0.25) 55%,
-    rgba(233, 183, 230, 0.15) 75%,
-    transparent 100%
-  );
-  mix-blend-mode: color-dodge;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+.holo-sheen {
+  background: linear-gradient(115deg, transparent 20%, rgba(222, 115, 156, 0.18) 42%, rgba(246, 238, 197, 0.28) 50%, rgba(123, 82, 123, 0.2) 58%, transparent 80%);
+  background-size: 200% 200%;
+  transition: opacity 0.3s ease;
 }
 
-/* FIFA TOTY Specific Shield Geometry */
-.fifa-toty-shield {
-  clip-path: polygon(15% 0%, 85% 0%, 100% 12%, 100% 78%, 50% 100%, 0% 78%, 0% 12%);
+.holo-foil-border {
+  border-image: linear-gradient(135deg, #de739c 0%, #7b527b 50%, #f6eec5 100%) 1;
 }
 
-.fifa-toty-inner {
-  clip-path: polygon(15% 0%, 85% 0%, 99.2% 12%, 99.2% 77.8%, 50% 99.2%, 0.8% 77.8%, 0.8% 12%);
+.neon-pink-glow {
+  box-shadow: 0 0 24px rgba(222, 115, 156, 0.28), inset 0 0 12px rgba(222, 115, 156, 0.12);
 }
 
-/* Gold Metallic Gradients */
-.gold-foil-text {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFF3C4 28%, #D4AF37 65%, #AA7C11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.custom-pink-glow:focus-within {
+  box-shadow: 0 0 16px rgba(222, 115, 156, 0.4), inset 0 0 8px rgba(222, 115, 156, 0.15);
 }
 
-.gold-foil-border {
-  background: linear-gradient(145deg, #FFE082 0%, #F59E0B 20%, #D97706 40%, #78350F 65%, #FBBF24 85%, #92400E 100%);
+.glow-active {
+  box-shadow: 0 0 20px rgba(222, 115, 156, 0.35);
 }
 
-.lapis-crystal-bg {
-  background: radial-gradient(ellipse at 50% 15%, #2563eb 0%, #1e3a8a 35%, #0f172a 75%, #020617 100%);
+/* 3D Card Perspective and Transform Container */
+.perspective-card, .card-3d-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-/* PSA Acrylic Slab Bevel & Rails */
-.psa-slab-frame {
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.22),
-    0 0 0 6px rgba(255,255,255,0.06),
-    0 30px 60px -12px rgba(0,0,0,0.95),
-    inset 0 2px 4px rgba(255,255,255,0.5),
-    inset 0 -2px 6px rgba(0,0,0,0.7);
+.transform-card {
+  transform: rotateY(-14deg) rotateX(10deg) rotateZ(2deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-/* Ruby Red / Gold Sapphire Prism Refractor */
-.ruby-sapphire-refractor {
-  background:
-    radial-gradient(ellipse at 75% 20%, rgba(255, 235, 150, 0.45) 0%, transparent 45%),
-    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.8) 0%, transparent 60%),
-    linear-gradient(135deg, #b91c1c 0%, #dc2626 25%, #f59e0b 55%, #7c2d12 85%, #450a0a 100%);
+.transform-card:hover {
+  transform: rotateY(-4deg) rotateX(4deg) rotateZ(0deg) translateY(-8px);
+  box-shadow: 0 0 32px rgba(222, 115, 156, 0.35);
 }
 
-.psa-holo-seal {
-  background: radial-gradient(circle, #fde047 0%, #ca8a04 40%, #854d0e 80%);
-  box-shadow: 0 0 6px rgba(250, 204, 21, 0.6);
+.card-3d-inner {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  transform: rotateX(0deg) rotateY(0deg);
+}
+
+/* Clip paths for collectible card variants */
+.clip-grid-frame {
+  clip-path: polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.clip-shield-frame {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 74%, 50% 100%, 0% 74%);
+}
+
+.clip-shield-inner {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 73.5%, 50% 99.5%, 0% 73.5%);
+}
+
+/* Carbon & Specular borders */
+.carbon-surface {
+  background: radial-gradient(circle at 50% 0%, rgba(59, 50, 63, 0.3) 0%, rgba(19, 11, 23, 0.95) 100%);
+}
+
+.specular-border {
+  background: linear-gradient(135deg, rgba(222, 115, 156, 0.6) 0%, rgba(84, 66, 71, 0.3) 50%, rgba(235, 227, 187, 0.4) 100%);
+}
+
+@keyframes neon-pulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 8px rgba(222, 115, 156, 0.4); }
+  50% { opacity: 1; box-shadow: 0 0 20px rgba(222, 115, 156, 0.8); }
+}
+
+.laser-glow {
+  animation: neon-pulse 2.2s ease-in-out infinite;
 }
