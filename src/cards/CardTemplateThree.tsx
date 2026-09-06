@@ -75,7 +75,7 @@ export const CardTemplateThree: React.FC<CardProps> = ({
                 </span>
               </div>
               <span className="text-label-sm font-label-sm text-primary tracking-widest uppercase font-bold">
-                {profile.rarity.name}
+                {profile.rarity}
               </span>
             </div>
           </div>

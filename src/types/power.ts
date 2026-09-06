@@ -1,5 +1,3 @@
-import { PlatformType } from './platform';
-
 export type RarityTier = 'COMMON' | 'RARE' | 'EPIC' | 'LEGENDARY' | 'MYTHIC';
 
 export interface StatMetric {
@@ -7,6 +5,7 @@ export interface StatMetric {
   value: number; // 0 to 100
   label: string;
   rawValue?: string | number;
+  score?: number;
 }
 
 export interface PowerBreakdown {

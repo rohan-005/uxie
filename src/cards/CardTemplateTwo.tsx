@@ -59,7 +59,7 @@ export const CardTemplateTwo: React.FC<CardProps> = ({
               <div className="bg-primary-container text-on-primary-container px-2 py-0.5 rounded-sm shadow-[0_0_10px_rgba(222,115,156,0.4)] flex items-center gap-1">
                 <span className="material-symbols-outlined text-xs">stars</span>
                 <span className="text-label-sm font-label-sm font-bold uppercase tracking-wider">
-                  {profile.rarity.name}
+                  {profile.rarity}
                 </span>
               </div>
               <span className="text-label-sm font-label-sm text-tertiary-fixed tracking-widest">

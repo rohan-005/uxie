@@ -46,7 +46,7 @@ export const CardTemplateOne: React.FC<CardProps> = ({
             </div>
             <div className="flex flex-col">
               <span className="text-label-sm font-label-sm text-primary tracking-widest uppercase">
-                {profile.rarity.name}
+                {profile.rarity}
               </span>
               <span className="text-label-sm font-label-sm text-tertiary-fixed uppercase">
                 {profile.platform} // SPECS
@@ -103,7 +103,7 @@ export const CardTemplateOne: React.FC<CardProps> = ({
               </div>
               <div className="w-full bg-surface-container-high h-1.5 overflow-hidden">
                 <div
-                  style={{ width: `${Math.min(100, Math.max(10, stat.score))}%` }}
+                  style={{ width: `${Math.min(100, Math.max(10, stat.score || stat.value))}%` }}
                   className={`h-full ${
                     idx === 0
                       ? 'bg-primary-container shadow-[0_0_8px_rgba(222,115,156,0.5)]'

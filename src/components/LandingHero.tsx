@@ -238,7 +238,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
             <div className="text-label-sm font-label-sm text-primary tracking-widest uppercase mb-1">
               ARCHITECTURAL SPECIFICATION
             </div>
-            <h2 class="text-headline-lg font-headline-lg text-on-surface">
+            <h2 className="text-headline-lg font-headline-lg text-on-surface">
               TELEMETRY BECOMES TACTILE PRESTIGE
             </h2>
           </div>

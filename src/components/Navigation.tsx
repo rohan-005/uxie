@@ -91,7 +91,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             title="Notifications"
             type="button"
           >
-            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span className="material-symbols-outlined text-[20px]">notifications</span>
             <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-primary rounded-full"></span>
           </button>
           <button
