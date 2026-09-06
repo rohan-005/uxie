@@ -19,8 +19,8 @@ export default function App() {
 
   const [selectedPlatform, setSelectedPlatform] = useState<PlatformType>('github');
   const [username, setUsername] = useState<string>('torvalds');
-  // Default to template2 (F1 Card with f1card.png background)
-  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplateId>('template2');
+  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplateId>('template1');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const [generatedProfile, setGeneratedProfile] = useState<PlatformProfile | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -87,10 +87,19 @@ export default function App() {
     handleFetchAndGenerate(p, u);
   };
 
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    if (query && currentTab !== 'explore') {
+      setCurrentTab('explore');
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background text-on-background flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container relative w-full overflow-x-hidden">
+    <div className="min-h-screen bg-surface-container-lowest text-on-surface flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container relative w-full overflow-x-hidden">
       <Navigation
         activeTab={currentTab}
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
         onNavigate={(tab) => {
           setCurrentTab(tab);
           if (tab === 'create' && step === 'reveal' && !generatedProfile) {
@@ -101,14 +110,14 @@ export default function App() {
 
       {/* Global Error Toast */}
       {errorMessage && (
-        <div className="sticky top-16 z-40 bg-error-container/90 border-b border-error text-on-error-container px-6 py-2.5 font-code text-label-code-sm flex items-center justify-between backdrop-blur-md w-full">
+        <div className="sticky top-16 z-40 bg-error-container/90 border-b border-error text-on-error-container px-6 py-2.5 font-label-sm text-label-sm flex items-center justify-between backdrop-blur-md w-full">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-[18px]">warning</span>
             <span>{errorMessage}</span>
           </div>
           <button
             onClick={() => setErrorMessage(null)}
-            className="font-bold hover:underline ml-4"
+            className="font-bold hover:underline ml-4 cursor-pointer"
           >
             Dismiss
           </button>
