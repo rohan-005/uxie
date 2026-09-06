@@ -10,307 +10,339 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
   onExploreClick,
 }) => {
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({
-    transform: 'rotateY(-12deg) rotateX(6deg) rotateZ(1deg)',
-    transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+    transform: 'rotateY(-14deg) rotateX(10deg) rotateZ(2deg)',
+    transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease',
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rotateY = (x / (rect.width / 2)) * 14;
-    const rotateX = -(y / (rect.height / 2)) * 14;
+    const rotateY = (x / (rect.width / 2)) * 12;
+    const rotateX = -(y / (rect.height / 2)) * 12;
 
     setTiltStyle({
-      transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-4px)`,
+      transform: `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-8px)`,
+      boxShadow: '0 0 32px rgba(222, 115, 156, 0.35)',
       transition: 'none',
     });
   };
 
   const handleMouseLeave = () => {
     setTiltStyle({
-      transform: 'rotateY(-12deg) rotateX(6deg) rotateZ(1deg)',
-      transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+      transform: 'rotateY(-14deg) rotateX(10deg) rotateZ(2deg)',
+      transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease',
     });
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
-      {/* Subtle Atmospheric Background Mesh Overlay across full viewport */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[580px] bg-secondary-container/15 blur-[160px] rounded-full"></div>
-        <div className="absolute top-40 right-[5%] w-[500px] h-[500px] bg-primary-container/10 blur-[180px] rounded-full"></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-[550px] h-[550px] bg-secondary/5 blur-[200px] rounded-full"></div>
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
+    <div className="relative w-full overflow-hidden flex-grow flex flex-col justify-between">
+      {/* Background atmospheric glow & grid mesh */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-32 left-1/4 w-[540px] h-[540px] bg-secondary-container opacity-25 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/3 right-10 w-[420px] h-[420px] bg-primary-container opacity-15 rounded-full blur-[140px]"></div>
+        <div className="absolute inset-0 grid-lines opacity-40"></div>
       </div>
 
-      {/* Hero Content Section - 100% Full Width */}
-      <section className="relative w-full pt-10 md:pt-16 pb-16 lg:pb-24 px-6 lg:px-12 z-10">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Hero Narrative Column (7 cols) */}
+      <div className="max-w-[1440px] mx-auto px-gutter-desktop py-space-2xl md:py-space-3xl relative z-10 w-full">
+        {/* Top Dossier Micro-Tag */}
+        <div className="flex items-center gap-space-xs mb-space-lg">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface-container border-l-2 border-primary-container text-label-sm font-label-sm text-tertiary tracking-widest uppercase rounded-DEFAULT">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span>
+            UXIE PROTOCOL V2.4 // TELEMETRY POWER CARDS
+          </span>
+          <span className="text-outline text-label-sm font-label-sm hidden sm:inline-block tracking-wider">
+            // SYSTEM CLEARANCE: OMNI
+          </span>
+        </div>
+
+        {/* Hero Grid: 12 Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+          {/* Left Hero Copy (7 cols desktop) */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-surface-container-low border border-primary-container/30 mb-6 shadow-sm">
-              <span className="w-1.5 h-1.5 bg-primary-container rounded-sm shadow-[0_0_8px_#de739c]"></span>
-              <span className="font-code text-label-code-sm uppercase text-tertiary tracking-widest font-semibold">
-                VERIFIED DEVELOPER STAT DECK v2.4
-              </span>
+            <div className="mb-space-xs inline-flex items-center gap-2 text-label-md font-label-md text-primary tracking-widest uppercase">
+              <span className="material-symbols-outlined text-[15px]">verified</span>
+              COMPETITIVE DEVELOPER PROOF-OF-CAPABILITY
             </div>
 
-            <h1 className="font-headline text-display-hero-mobile md:text-display-hero font-bold tracking-tight text-tertiary-fixed leading-[1.08] mb-6">
-              KNOW YOUR <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-tertiary-fixed via-primary to-primary-container drop-shadow-[0_0_35px_rgba(222,115,156,0.35)]">
+            {/* Bold Commanding Headline */}
+            <h1 className="text-display-xl-mobile md:text-display-xl font-display-xl tracking-tight text-on-surface uppercase mb-space-md">
+              KNOW YOUR{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-container via-primary to-tertiary drop-shadow-[0_0_24px_rgba(222,115,156,0.45)]">
                 POWER
               </span>
             </h1>
 
-            <p className="font-body text-body-lg text-on-surface-variant max-w-2xl mb-9 leading-relaxed">
-              Transform your commits, rating milestones, and algorithmic prowess into a verifiable, holographic Developer Power Card.{' '}
-              <span className="text-on-surface font-medium">Know your power. Show your progress.</span>
+            {/* Tagline Subtext */}
+            <p className="text-body-lg font-body-lg text-on-surface-variant max-w-xl mb-space-xl leading-relaxed">
+              Turn your commits, algorithm rating, and competitive coding milestones into dynamic, verifiable collectible Power Cards.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-12">
+            {/* CTAs & Micro Actions */}
+            <div className="flex flex-wrap items-center gap-space-md w-full sm:w-auto">
+              {/* Primary Button */}
               <button
                 onClick={onStartClick}
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg bg-surface-container-lowest border-2 border-primary-container text-tertiary-fixed font-code text-label-code-lg font-bold uppercase tracking-wider shadow-[0_0_24px_rgba(222,115,156,0.3)] hover:shadow-[0_0_36px_rgba(222,115,156,0.55)] hover:bg-surface-container-high transition-all active:scale-95 duration-150 group"
+                className="w-full sm:w-auto bg-primary-container text-on-primary-container font-label-lg text-label-lg px-space-xl py-3.5 rounded-lg font-bold border border-primary-container hover:shadow-[0_0_20px_rgba(222,115,156,0.6)] active:scale-[0.98] transition-all duration-150 flex items-center justify-center gap-space-sm cursor-pointer"
                 type="button"
               >
-                <span>CREATE YOUR CARD</span>
-                <span className="material-symbols-outlined text-[18px] text-primary transition-transform group-hover:translate-x-1">
-                  arrow_forward
-                </span>
+                <span className="material-symbols-outlined text-[18px]">bolt</span>
+                CREATE YOUR CARD
               </button>
 
+              {/* Secondary Button */}
               <button
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-lg border border-outline-variant/50 text-tertiary hover:text-on-surface hover:border-primary transition-colors font-code text-label-code-sm uppercase tracking-wider"
+                className="w-full sm:w-auto bg-surface-container-low text-tertiary hover:border-primary-container border border-outline-variant font-label-lg text-label-lg px-space-lg py-3.5 rounded-lg hover:text-on-surface transition-all duration-150 flex items-center justify-center gap-space-xs cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-[18px]">token</span>
-                <span>Inspect Tier Gallery</span>
+                <span className="material-symbols-outlined text-[18px]">view_carousel</span>
+                EXPLORE SHOWCASE
               </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 pt-6 border-t border-outline-variant/30 w-full max-w-xl">
-              <div>
-                <div className="font-stat-counter text-stat-counter font-bold text-tertiary-fixed">99.8%</div>
-                <div className="font-code text-label-code-sm text-on-surface-variant uppercase tracking-wider">Proof Accuracy</div>
+            {/* Quick Telemetry Integrations Strip */}
+            <div className="mt-space-2xl pt-space-md border-t border-outline-variant w-full max-w-lg">
+              <div className="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-space-sm">
+                SYNCHRONIZING TELEMETRY FROM ELITE PLATFORMS
               </div>
-              <div>
-                <div className="font-stat-counter text-stat-counter font-bold text-primary">#14</div>
-                <div className="font-code text-label-code-sm text-on-surface-variant uppercase tracking-wider">Global Rank Floor</div>
-              </div>
-              <div>
-                <div className="font-stat-counter text-stat-counter font-bold text-tertiary-fixed">&lt;120ms</div>
-                <div className="font-code text-label-code-sm text-on-surface-variant uppercase tracking-wider">Card Sync Rate</div>
+              <div className="flex flex-wrap items-center gap-space-md text-on-surface-variant font-label-md text-label-md">
+                <span className="flex items-center gap-1.5 px-2 py-1 bg-surface-container border border-outline-variant rounded-lg">
+                  <span className="material-symbols-outlined text-[15px] text-primary">data_object</span> GitHub
+                </span>
+                <span className="flex items-center gap-1.5 px-2 py-1 bg-surface-container border border-outline-variant rounded-lg">
+                  <span className="material-symbols-outlined text-[15px] text-primary">code</span> LeetCode
+                </span>
+                <span className="flex items-center gap-1.5 px-2 py-1 bg-surface-container border border-outline-variant rounded-lg">
+                  <span className="material-symbols-outlined text-[15px] text-primary">terminal</span> Codeforces
+                </span>
+                <span className="flex items-center gap-1.5 px-2 py-1 bg-surface-container border border-outline-variant rounded-lg">
+                  <span className="material-symbols-outlined text-[15px] text-primary">restaurant_menu</span> CodeChef
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Hero Graphic Column: 3D Holographic Power Card Showcase (5 cols) */}
+          {/* Right Hero Preview: Holographic Power Card (5 cols desktop) */}
           <div
-            className="lg:col-span-5 flex justify-center lg:justify-end perspective-card-wrapper relative"
+            className="lg:col-span-5 flex justify-center lg:justify-end perspective-card relative mt-space-xl lg:mt-0"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="absolute inset-0 max-w-sm mx-auto bg-gradient-to-tr from-secondary-container/20 via-primary-container/20 to-transparent blur-[70px] rounded-full pointer-events-none"></div>
+            {/* Outer Ambient Glow Behind Card */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-secondary-container via-primary-container to-tertiary-container rounded-xl blur-2xl opacity-20 transform -rotate-3"></div>
 
+            {/* The Power Card (Standard 2.5:3.5 Collectible Aspect Ratio) */}
             <div
               style={tiltStyle}
-              className="tilted-card relative w-full max-w-[370px] aspect-[1/1.52] rounded-2xl bg-[#1C1224]/90 backdrop-blur-xl border border-primary-container/40 shadow-[0_24px_50px_-10px_rgba(18,12,24,0.9),0_0_30px_rgba(222,115,156,0.25)] p-5 flex flex-col justify-between overflow-hidden group cursor-pointer"
+              className="relative w-[320px] sm:w-[360px] aspect-[2.5/3.5] bg-surface-container-low border-2 border-outline-variant rounded-xl p-3 shadow-2xl flex flex-col justify-between overflow-hidden group cursor-pointer"
               onClick={onStartClick}
             >
-              <div className="absolute inset-0 foil-overlay pointer-events-none rounded-2xl"></div>
+              {/* Holographic Sheen Layer */}
+              <div className="absolute inset-0 holographic-sheen pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity duration-300"></div>
 
-              <div className="relative z-10 flex items-center justify-between border-b border-outline-variant/30 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-surface-container flex items-center justify-center border border-primary-container/40">
-                    <span className="material-symbols-outlined text-[14px] text-primary">verified</span>
-                  </div>
+              {/* Specular Corner Registration Marks */}
+              <div className="absolute top-1.5 left-1.5 text-outline text-[9px] font-label-sm tracking-tighter select-none">┌ 0x9F</div>
+              <div className="absolute top-1.5 right-1.5 text-outline text-[9px] font-label-sm tracking-tighter select-none">┐ 2.5:3.5</div>
+              <div className="absolute bottom-1.5 left-1.5 text-outline text-[9px] font-label-sm tracking-tighter select-none">└ 99.8%</div>
+              <div className="absolute bottom-1.5 right-1.5 text-outline text-[9px] font-label-sm tracking-tighter select-none">┘ MINTED</div>
+
+              {/* Card Header Section */}
+              <div className="relative z-10 border-b border-outline-variant pb-2 pt-1">
+                <div className="flex justify-between items-start">
                   <div>
-                    <span className="font-code text-label-code-sm text-primary-container uppercase font-bold tracking-wider block leading-none">
-                      MYTHIC MAINTAINER
-                    </span>
-                    <span className="font-code text-[9px] text-on-surface-variant tracking-wider leading-none">
-                      SERIES 01 // ID #0492
-                    </span>
-                  </div>
-                </div>
-                <div className="px-2 py-0.5 rounded-lg bg-primary-container/20 border border-primary-container/50">
-                  <span className="font-code text-label-code-sm text-tertiary-fixed font-bold tracking-wider">TOP 0.1%</span>
-                </div>
-              </div>
-
-              <div className="relative z-10 my-3 rounded-xl overflow-hidden border border-outline-variant/30 bg-surface-container-lowest/80 p-3">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="/fifa.jpeg"
-                      alt="Developer Avatar Demo"
-                      className="w-12 h-12 rounded-xl object-cover border border-primary-container/40 shadow-sm"
-                    />
-                    <div>
-                      <div className="font-headline text-headline-md font-bold text-tertiary-fixed leading-tight">alex.sys</div>
-                      <div className="font-code text-label-code-sm text-tertiary">staff-l8 // distributed-mesh</div>
+                    <div className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-container-lowest border-l border-primary-container text-label-sm font-label-sm text-tertiary rounded-DEFAULT">
+                      <span className="material-symbols-outlined text-[12px] text-primary">military_tech</span>
+                      TIER 0 // GRANDMASTER
                     </div>
+                    <h3 className="text-headline-sm font-headline-sm text-tertiary tracking-wide mt-1">
+                      CYBER_VALKYRIE
+                    </h3>
+                    <p className="text-label-sm font-label-sm text-outline">CLASS: DISTRIBUTED SYSTEMS ARCHITECT</p>
                   </div>
                   <div className="text-right">
-                    <div className="font-stat-counter text-stat-counter font-bold text-tertiary-fixed leading-none">98</div>
-                    <div className="font-code text-[10px] text-primary tracking-widest uppercase">UXIE POWER</div>
+                    <div className="text-stat-metric font-stat-metric text-primary leading-none">99.4</div>
+                    <div className="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">PWR INDEX</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Developer Avatar & Holographic Center Dossier */}
+              <div className="relative z-10 my-2 flex-grow flex flex-col justify-center">
+                <div className="relative w-full h-36 rounded-lg overflow-hidden border border-outline-variant bg-surface-container-lowest group/img">
+                  <img
+                    className="w-full h-full object-cover object-center opacity-85 group-hover/img:scale-105 transition-transform duration-500"
+                    alt="Holographic developer profile avatar"
+                    src="/fifa.jpeg"
+                  />
+                  {/* Foil Badge Overlay */}
+                  <div className="absolute top-2 right-2 bg-surface-container-lowest/90 backdrop-blur-sm border border-primary-container px-2 py-0.5 rounded-DEFAULT text-label-sm font-label-sm text-primary flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[13px]">auto_awesome</span>
+                    HOLO FOIL #042
+                  </div>
+                  {/* Live Sparks Indicator */}
+                  <div className="absolute bottom-2 left-2 flex items-center gap-1 bg-surface-container-lowest/90 px-1.5 py-0.5 rounded-DEFAULT border border-outline-variant">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    <span className="text-label-sm font-label-sm text-tertiary">SYNCED // 12m AGO</span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-outline-variant/30">
-                  <div className="flex items-center gap-2 p-1.5 rounded-md bg-surface-container/60 border border-outline-variant/25">
-                    <span className="material-symbols-outlined text-[16px] text-primary">terminal</span>
-                    <div className="truncate">
-                      <div className="font-code text-[10px] text-on-surface-variant leading-none">GitHub Activity</div>
-                      <div className="font-code text-label-code-sm font-bold text-on-surface">3,412 / YR</div>
+                {/* Metric Matrix: Internal Wells */}
+                <div className="grid grid-cols-3 gap-1.5 mt-2.5">
+                  <div className="bg-surface-container-lowest border border-outline-variant p-2 rounded-lg text-center shadow-inner">
+                    <div className="text-label-sm font-label-sm text-outline uppercase">PROB SOLVING</div>
+                    <div className="text-label-lg font-label-lg text-tertiary font-bold mt-0.5">2,840</div>
+                    <div className="w-full bg-surface-container h-1 rounded-full mt-1.5 overflow-hidden">
+                      <div className="bg-primary-container h-full w-[94%]"></div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 p-1.5 rounded-md bg-surface-container/60 border border-outline-variant/25">
-                    <span className="material-symbols-outlined text-[16px] text-tertiary">code_blocks</span>
-                    <div className="truncate">
-                      <div className="font-code text-[10px] text-on-surface-variant leading-none">LeetCode Knight</div>
-                      <div className="font-code text-label-code-sm font-bold text-tertiary-fixed">2,488 ELO</div>
+                  <div className="bg-surface-container-lowest border border-outline-variant p-2 rounded-lg text-center shadow-inner">
+                    <div className="text-label-sm font-label-sm text-outline uppercase">CONSISTENCY</div>
+                    <div className="text-label-lg font-label-lg text-primary font-bold mt-0.5">412 D</div>
+                    <div className="w-full bg-surface-container h-1 rounded-full mt-1.5 overflow-hidden">
+                      <div className="bg-primary-container h-full w-[88%]"></div>
+                    </div>
+                  </div>
+                  <div className="bg-surface-container-lowest border border-outline-variant p-2 rounded-lg text-center shadow-inner">
+                    <div className="text-label-sm font-label-sm text-outline uppercase">ALGORITHMS</div>
+                    <div className="text-label-lg font-label-lg text-tertiary font-bold mt-0.5">TOP 0.1%</div>
+                    <div className="w-full bg-surface-container h-1 rounded-full mt-1.5 overflow-hidden">
+                      <div className="bg-primary h-full w-[99%]"></div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="relative z-10 space-y-2.5">
-                <div>
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="font-code text-[10px] text-on-surface-variant uppercase tracking-wider">Algorithmic Velocity</span>
-                    <span className="font-code text-[11px] font-bold text-tertiary-fixed">98 / 100</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-surface-container-lowest rounded-sm overflow-hidden border border-outline-variant/30 p-[1px]">
-                    <div className="h-full bg-gradient-to-r from-secondary-container to-primary-container rounded-sm w-[98%]"></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="font-code text-[10px] text-on-surface-variant uppercase tracking-wider">Maintainer Influence</span>
-                    <span className="font-code text-[11px] font-bold text-tertiary-fixed">94 / 100</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-surface-container-lowest rounded-sm overflow-hidden border border-outline-variant/30 p-[1px]">
-                    <div className="h-full bg-gradient-to-r from-secondary to-primary rounded-sm w-[94%]"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative z-10 flex items-center justify-between pt-3 border-t border-outline-variant/30 mt-2">
+              {/* Bottom Verification & Cryptographic Stamp */}
+              <div className="relative z-10 border-t border-outline-variant pt-2 flex justify-between items-center bg-surface-container-lowest/60 px-2 py-1.5 rounded-lg">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-sm bg-tertiary"></span>
-                  <span className="font-code text-[10px] text-on-surface-variant uppercase">EDITION 01/500</span>
+                  <span className="material-symbols-outlined text-[16px] text-primary">qr_code_2</span>
+                  <div>
+                    <div className="text-label-sm font-label-sm text-on-surface font-semibold tracking-wider">SHA256: 8e2d...01ca</div>
+                    <div className="text-[8px] font-label-sm text-outline leading-none">VERIFIED ON ETH &amp; GITHUB LEDGER</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1 text-primary">
-                  <span className="font-code text-[10px] uppercase font-bold tracking-widest">HOLO-PRISM</span>
-                  <span className="material-symbols-outlined text-[12px]">auto_awesome</span>
+                <div className="text-right">
+                  <span className="text-label-sm font-label-sm text-primary tracking-widest uppercase font-bold">UXIE CARD</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Feature Bento: Mechanics of Power Cards */}
+      <section className="max-w-[1440px] mx-auto px-gutter-desktop py-space-2xl border-t border-outline-variant w-full">
+        <div className="mb-space-xl flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+          <div>
+            <div className="text-label-sm font-label-sm text-primary tracking-widest uppercase mb-1">
+              ARCHITECTURAL SPECIFICATION
+            </div>
+            <h2 class="text-headline-lg font-headline-lg text-on-surface">
+              TELEMETRY BECOMES TACTILE PRESTIGE
+            </h2>
+          </div>
+          <p className="text-body-md font-body-md text-on-surface-variant max-w-md">
+            Immutable cryptographic proof tied to your real git trees and algorithmic submissions. No fluff, pure engineering telemetry.
+          </p>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+          <div className="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-full pointer-events-none"></div>
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center text-primary mb-space-md">
+                <span className="material-symbols-outlined text-[22px]">hub</span>
+              </div>
+              <h3 className="text-headline-sm font-headline-sm text-tertiary mb-space-xs">Multi-Platform Ingestion</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">
+                Seamlessly pipelines commit histories, pull request velocity, contest rating deltas, and open-source impact into one coherent index.
+              </p>
+            </div>
+            <div className="mt-space-lg pt-space-sm border-t border-outline-variant/60 flex items-center justify-between text-label-sm font-label-sm text-outline">
+              <span>SYNC INTERVAL</span>
+              <span className="text-primary font-bold">15 MINUTES</span>
+            </div>
+          </div>
+
+          <div className="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-container/10 rounded-bl-full pointer-events-none"></div>
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center text-primary mb-space-md">
+                <span className="material-symbols-outlined text-[22px]">verified_user</span>
+              </div>
+              <h3 className="text-headline-sm font-headline-sm text-tertiary mb-space-xs">Cryptographic Integrity</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">
+                Every minted card is signed with public keys from verified platform accounts, eliminating spoofing and resume inflation forever.
+              </p>
+            </div>
+            <div className="mt-space-lg pt-space-sm border-t border-outline-variant/60 flex items-center justify-between text-label-sm font-label-sm text-outline">
+              <span>SIGNATURE TYPE</span>
+              <span className="text-primary font-bold">ED25519 VERIFIED</span>
+            </div>
+          </div>
+
+          <div className="bg-surface-container-low border border-outline-variant rounded-xl p-space-lg relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-tertiary-container/10 rounded-bl-full pointer-events-none"></div>
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center text-primary mb-space-md">
+                <span className="material-symbols-outlined text-[22px]">social_leaderboard</span>
+              </div>
+              <h3 className="text-headline-sm font-headline-sm text-tertiary mb-space-xs">Global Arena Rankings</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">
+                Compare your power card with engineers worldwide across specific domains: Kernel hacking, AI agents, Web3 protocols, and DSA speed.
+              </p>
+            </div>
+            <div className="mt-space-lg pt-space-sm border-t border-outline-variant/60 flex items-center justify-between text-label-sm font-label-sm text-outline">
+              <span>LEADERBOARD TIERS</span>
+              <span className="text-primary font-bold">BRONZE → TITAN</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Strip */}
-      <section className="w-full border-y border-outline-variant/30 bg-surface-container-low/60 backdrop-blur-sm py-6 px-6 lg:px-12 relative z-10">
-        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center border border-primary-container/30 text-primary">
-              <span className="material-symbols-outlined text-[20px]">verified_user</span>
-            </div>
-            <div>
-              <div className="font-code text-label-code-lg text-tertiary-fixed font-bold tracking-wide">
-                50,000+ DEVELOPER CARDS MINTED
+      {/* Clean Stats Banner at Bottom */}
+      <section className="border-t border-b border-outline-variant bg-surface-container-lowest w-full">
+        <div className="max-w-[1440px] mx-auto px-gutter-desktop py-space-xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+            <div className="py-space-sm md:py-0 md:pr-space-lg flex flex-col justify-center">
+              <div className="text-stat-metric font-stat-metric text-on-surface tracking-tight mb-1">
+                240,000+
               </div>
-              <div className="font-code text-label-code-sm text-on-surface-variant">
-                Across verified GitHub, Codeforces, LeetCode &amp; CodeChef profiles
+              <div className="text-label-md font-label-md text-primary uppercase tracking-wider font-semibold">
+                Cards Minted
               </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-6 text-on-surface-variant font-code text-label-code-sm uppercase tracking-wider">
-            <div className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-[18px]">terminal</span>
-              <span>GITHUB</span>
-            </div>
-            <div className="w-1 h-1 bg-outline-variant/60 rounded-sm"></div>
-            <div className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-[18px]">military_tech</span>
-              <span>CODEFORCES</span>
-            </div>
-            <div className="w-1 h-1 bg-outline-variant/60 rounded-sm"></div>
-            <div className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-[18px]">code</span>
-              <span>LEETCODE</span>
-            </div>
-            <div className="w-1 h-1 bg-outline-variant/60 rounded-sm"></div>
-            <div className="flex items-center gap-1.5 hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-[18px]">restaurant</span>
-              <span>CODECHEF</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bento Grid Section - 100% Full Width */}
-      <section className="w-full py-20 px-6 lg:px-12 relative z-10">
-        <div className="mb-12">
-          <div className="font-code text-label-code-sm text-primary uppercase tracking-widest font-semibold mb-2">
-            ENGINEER RECOGNITION PRIMITIVES
-          </div>
-          <h2 className="font-headline text-headline-lg font-bold text-tertiary-fixed tracking-tight">
-            Not another generic badge. Physical-grade digital status.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          <div className="rounded-xl p-6 bg-surface-container/60 border border-outline-variant/30 hover:border-primary-container/60 transition-all group flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-primary mb-4 group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[22px]">fingerprint</span>
-              </div>
-              <div className="font-headline text-headline-md text-tertiary-fixed font-bold mb-2">Public Profile Analytics</div>
-              <p className="text-on-surface-variant font-body text-body-md leading-relaxed">
-                Every commit, contest rating, and pull request is fetched and normalized by the UXIE engine, calculating your true power score.
+              <p className="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                Distributed across 84 countries and elite engineering organizations.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
-              <span className="font-code text-label-code-sm uppercase text-tertiary">REAL-TIME DATA ENGINE</span>
-              <span className="material-symbols-outlined text-[16px] text-primary">key</span>
-            </div>
-          </div>
 
-          <div className="rounded-xl p-6 bg-surface-container/60 border border-outline-variant/30 hover:border-primary-container/60 transition-all group flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-secondary mb-4 group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[22px]">layers</span>
+            <div className="py-space-sm md:py-0 md:px-space-lg flex flex-col justify-center">
+              <div className="text-stat-metric font-stat-metric text-on-surface tracking-tight mb-1 flex items-center justify-center md:justify-start gap-2">
+                <span>18</span>
+                <span className="text-label-sm font-label-sm px-2 py-0.5 bg-secondary-container text-on-surface rounded-DEFAULT font-normal">
+                  NATIVE APIS
+                </span>
               </div>
-              <div className="font-headline text-headline-md text-tertiary-fixed font-bold mb-2">Collector Tier Rarities</div>
-              <p className="text-on-surface-variant font-body text-body-md leading-relaxed">
-                Ascend from Common to Mythic. Dynamic collectible card styling, frames, and neon treatments adapt to your power rating.
+              <div className="text-label-md font-label-md text-primary uppercase tracking-wider font-semibold">
+                Top Platforms Connected
+              </div>
+              <p className="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                GitHub, LeetCode, Codeforces, AtCoder, HackerRank, Kaggle &amp; GitLab.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
-              <span className="font-code text-label-code-sm uppercase text-tertiary">5 PRESTIGE TIERS</span>
-              <span className="material-symbols-outlined text-[16px] text-secondary">military_tech</span>
-            </div>
-          </div>
 
-          <div className="rounded-xl p-6 bg-surface-container/60 border border-outline-variant/30 hover:border-primary-container/60 transition-all group flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-tertiary mb-4 group-hover:scale-105 transition-transform">
-                <span className="material-symbols-outlined text-[22px]">share</span>
+            <div className="py-space-sm md:py-0 md:pl-space-lg flex flex-col justify-center">
+              <div className="text-stat-metric font-stat-metric text-on-surface tracking-tight mb-1">
+                24/7 LIVE
               </div>
-              <div className="font-headline text-headline-md text-tertiary-fixed font-bold mb-2">Export &amp; Share</div>
-              <p className="text-on-surface-variant font-body text-body-md leading-relaxed">
-                Download ultra-high resolution PNG cards, copy share links, or generate HTML embed snippets for your GitHub README.
+              <div className="text-label-md font-label-md text-primary uppercase tracking-wider font-semibold">
+                Daily Global Leaderboard
+              </div>
+              <p className="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                Real-time ELO reassessment powered by verifiable telemetry proofs.
               </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
-              <span className="font-code text-label-code-sm uppercase text-tertiary">PNG &amp; EMBED SNIPPETS</span>
-              <span className="material-symbols-outlined text-[16px] text-tertiary">code</span>
             </div>
           </div>
         </div>
