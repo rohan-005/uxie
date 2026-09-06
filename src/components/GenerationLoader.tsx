@@ -8,11 +8,11 @@ interface GenerationLoaderProps {
 }
 
 const STEPS = [
-  'CONNECTING TO PUBLIC PROFILE...',
-  'ANALYZING REPOSITORY & CONTEST TELEMETRY...',
-  'CALCULATING UXIE POWER STATISTICAL METRICS...',
-  'EVALUATING PERFORMANCE & RARITY TIER...',
-  'GENERATING HOLOGRAPHIC POWER CARD...',
+  'INGESTING PLATFORM TELEMETRY...',
+  'EVALUATING ALGORITHMIC RIGOR MATRIX...',
+  'APPLYING HOLOGRAPHIC SHEEN...',
+  'GENERATING CRYPTOGRAPHIC SEAL...',
+  'POWER CARD SYNTHESIS COMPLETE...',
 ];
 
 export const GenerationLoader: React.FC<GenerationLoaderProps> = ({
@@ -24,7 +24,7 @@ export const GenerationLoader: React.FC<GenerationLoaderProps> = ({
   const [stepIndex, setStepIndex] = useState(0);
 
   useEffect(() => {
-    const duration = 2800; // Total 2.8 seconds animation
+    const duration = 2800; // 2.8s total
     const intervalTime = 40;
     const increment = 100 / (duration / intervalTime);
 
@@ -52,120 +52,157 @@ export const GenerationLoader: React.FC<GenerationLoaderProps> = ({
   }, [progress]);
 
   return (
-    <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-12 py-12 max-w-7xl mx-auto w-full">
-      <div className="w-full max-w-3xl rounded-xl bg-surface-container-low/85 backdrop-blur-xl border border-primary-container/30 shadow-[0_24px_64px_rgba(18,12,24,0.9),0_0_32px_rgba(222,115,156,0.12)] p-6 sm:p-10 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-container to-transparent opacity-80"></div>
+    <main className="relative z-10 flex-1 w-full max-w-[1440px] mx-auto px-gutter-desktop py-8 md:py-12 flex flex-col items-center justify-center">
+      {/* Atmospheric Layering */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[540px] bg-secondary-container/20 rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-10 right-10 w-[420px] h-[340px] bg-primary-container/10 rounded-full blur-[110px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(19,11,23,0.3)_0%,rgba(14,7,18,0.95)_100%)]"></div>
+      </div>
 
-        {/* Top Bar */}
-        <div className="flex items-center justify-between pb-6 border-b border-outline-variant/25">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded bg-primary-container animate-pulse shadow-[0_0_8px_#de739c]"></span>
-            <span className="font-code text-label-code-sm text-tertiary uppercase tracking-widest font-semibold">
-              SYNTHESIZING DEVELOPER POWER
-            </span>
-          </div>
-          <div className="font-code text-label-code-sm text-outline">
-            {platform.toUpperCase()} // @{username}
-          </div>
+      {/* Stage Indicator Bar */}
+      <div className="w-full max-w-5xl flex items-center justify-between mb-8 pb-4 border-b border-outline-variant/40 relative z-10">
+        <div className="flex items-center gap-3">
+          <span className="px-2 py-0.5 bg-surface-container-high border-l-2 border-primary text-tertiary-fixed font-label-sm text-label-sm uppercase tracking-widest">
+            PHASE 03 // EXTRACTION
+          </span>
+          <span className="text-on-surface-variant font-label-sm text-label-sm hidden sm:inline">
+            EST. DISPATCH: 00:04s
+          </span>
         </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+            <span className="text-tertiary-fixed font-bold">CARD FORGE</span>
+            <span className="text-outline-variant">/</span>
+            <span className="text-primary font-bold">SYNTHESIS</span>
+          </div>
+          <span className="inline-flex items-center px-2 py-0.5 rounded-DEFAULT bg-surface-container-lowest border border-outline-variant text-primary font-label-sm text-label-sm">
+            {Math.round(progress)}%
+          </span>
+        </div>
+      </div>
 
-        {/* Hexagonal Radar Polygon Animation */}
-        <div className="py-8 flex flex-col items-center justify-center relative">
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
-            {/* Outer Rotating Dash Lines */}
-            <div className="absolute inset-0 rounded-full border border-dashed border-outline-variant/50 animate-[spin_12s_linear_infinite]"></div>
-            <div className="absolute inset-3 rounded-full border border-primary-container/20 animate-[spin_8s_linear_infinite_reverse]"></div>
+      {/* Central Focus Grid: Dual Wing Telemetry + Centered Card Chamber */}
+      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center relative z-10">
+        {/* Left Module: Status Steps & Progress Metric */}
+        <div className="lg:col-span-4 order-2 lg:order-1 flex flex-col gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-none bg-primary-container laser-glow"></span>
+              <span className="text-label-sm font-label-sm text-primary uppercase tracking-widest">REALTIME ENGINE ACTIVE</span>
+            </div>
+            <h1 className="text-headline-md font-headline-md text-tertiary-fixed tracking-tight uppercase">
+              SYNTHESIZING DEVELOPER CARD
+            </h1>
+            <p className="text-body-sm font-body-sm text-on-surface-variant mt-1">
+              Constructing hardened cryptographic telemetry profile from @{username}'s {platform.toUpperCase()} profile.
+            </p>
+          </div>
 
-            {/* Radar SVG */}
-            <svg
-              className="w-40 h-40 sm:w-48 sm:h-48 animate-pulse drop-shadow-[0_0_18px_rgba(222,115,156,0.35)]"
-              viewBox="0 0 160 160"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polygon
-                opacity="0.6"
-                points="80,10 142,46 142,114 80,150 18,114 18,46"
-                stroke="#544247"
-                strokeDasharray="3 3"
-                strokeWidth="1"
-              />
-              <polygon
-                opacity="0.7"
-                points="80,30 124,56 124,104 80,130 36,104 36,56"
-                stroke="#623b63"
-                strokeWidth="1"
-              />
-              <polygon
-                opacity="0.4"
-                points="80,50 106,66 106,94 80,110 54,94 54,66"
-                stroke="#de739c"
-                strokeWidth="1"
-              />
-              <line opacity="0.5" stroke="#544247" strokeWidth="1" x1="80" y1="10" x2="80" y2="150" />
-              <line opacity="0.5" stroke="#544247" strokeWidth="1" x1="18" y1="46" x2="142" y2="114" />
-              <line opacity="0.5" stroke="#544247" strokeWidth="1" x1="18" y1="114" x2="142" y2="46" />
+          {/* Sequential Processing Array */}
+          <div className="flex flex-col gap-3 bg-surface-container-lowest p-4 rounded-DEFAULT border border-outline-variant/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)]">
+            <div className={`p-3 bg-surface-container-low rounded-DEFAULT border flex items-start gap-3 transition-colors ${progress > 20 ? 'border-primary-container/40' : 'border-outline-variant/30'}`}>
+              <div className="w-6 h-6 rounded-DEFAULT bg-surface-container-high border border-tertiary/40 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="material-symbols-outlined text-[15px] text-tertiary-fixed">
+                  {progress > 25 ? 'check' : 'sync'}
+                </span>
+              </div>
+              <div>
+                <div className="text-label-sm font-label-sm text-tertiary font-semibold uppercase">1. INGESTING DATA VECTORS</div>
+                <div className="text-body-sm font-body-sm text-on-surface-variant">Fetched {platform.toUpperCase()} profile telemetry payload</div>
+              </div>
+            </div>
 
-              <polygon
-                fill="url(#polyGradient)"
-                fillOpacity="0.4"
-                points="80,18 136,52 118,108 80,140 28,100 32,50"
-                stroke="#ffb0ca"
-                strokeWidth="2"
-              />
-              <circle cx="80" cy="18" r="3.5" fill="#f6eec5" />
-              <circle cx="136" cy="52" r="3.5" fill="#de739c" />
-              <circle cx="118" cy="108" r="3.5" fill="#de739c" />
-              <circle cx="80" cy="140" r="3.5" fill="#ffb0ca" />
-              <circle cx="28" cy="100" r="3.5" fill="#de739c" />
-              <circle cx="32" cy="50" r="3.5" fill="#f6eec5" />
+            <div className={`p-3 bg-surface-container-low rounded-DEFAULT border flex items-start gap-3 transition-colors ${progress > 50 ? 'border-primary-container/40' : 'border-outline-variant/30'}`}>
+              <div className="w-6 h-6 rounded-DEFAULT bg-surface-container-high border border-tertiary/40 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="material-symbols-outlined text-[15px] text-tertiary-fixed">
+                  {progress > 60 ? 'check' : 'grid_view'}
+                </span>
+              </div>
+              <div>
+                <div className="text-label-sm font-label-sm text-tertiary font-semibold uppercase">2. ALGORITHMIC RIGOR MATRIX</div>
+                <div className="text-body-sm font-body-sm text-on-surface-variant">Calculating normalized UXIE Power Score</div>
+              </div>
+            </div>
 
-              <defs>
-                <linearGradient id="polyGradient" x1="18" y1="10" x2="142" y2="150" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#de739c" stopOpacity="0.8" />
-                  <stop offset="0.5" stopColor="#7b527b" stopOpacity="0.4" />
-                  <stop offset="1" stopColor="#ffb0ca" stopOpacity="0.8" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="font-stat-counter text-3xl font-bold text-tertiary-fixed leading-none">
-                {Math.round(progress)}%
-              </span>
+            <div className={`p-3 bg-surface-container-low rounded-DEFAULT border flex items-start gap-3 transition-colors ${progress > 85 ? 'border-primary-container/40' : 'border-outline-variant/30'}`}>
+              <div className="w-6 h-6 rounded-DEFAULT bg-surface-container-high border border-tertiary/40 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="material-symbols-outlined text-[15px] text-primary">
+                  {progress >= 100 ? 'check' : 'auto_awesome'}
+                </span>
+              </div>
+              <div>
+                <div className="text-label-sm font-label-sm text-primary font-semibold uppercase">3. HOLOGRAPHIC FOIL &amp; CARDS</div>
+                <div className="text-body-sm font-body-sm text-on-surface-variant">Minting Grid, Ultimate &amp; Court card frames</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Current Step Status */}
-        <div className="text-center my-4 space-y-2">
-          <div className="font-code text-label-code-lg font-bold text-tertiary tracking-wider uppercase">
-            {STEPS[stepIndex]}
-          </div>
-          <div className="h-2 w-full bg-surface-container-lowest rounded-full overflow-hidden border border-outline-variant/30 p-[1px] max-w-xl mx-auto">
-            <div
-              style={{ width: `${progress}%` }}
-              className="h-full bg-gradient-to-r from-secondary-container via-primary-container to-primary rounded-full transition-all duration-75"
-            ></div>
+        {/* Center Chamber: Rotating Telemetry Ring & Holographic Laser Card Silhouette */}
+        <div className="lg:col-span-4 order-1 lg:order-2 flex flex-col items-center justify-center">
+          <div className="relative w-full max-w-[280px] aspect-[2.5/3.5] bg-surface-container-lowest border-2 border-primary-container p-3 rounded-lg shadow-[0_0_40px_rgba(222,115,156,0.3)] overflow-hidden flex flex-col justify-between group">
+            {/* Spinning Laser Ring Background */}
+            <div className="absolute -inset-10 border border-dashed border-primary-container/40 rounded-full animate-[spin_10s_linear_infinite] pointer-events-none"></div>
+            <div className="absolute inset-0 holographic-sheen pointer-events-none opacity-50"></div>
+
+            {/* Specular corner accents */}
+            <div className="absolute top-1.5 left-1.5 text-outline text-[9px] font-label-sm">┌ SYNTHESIS</div>
+            <div className="absolute top-1.5 right-1.5 text-outline text-[9px] font-label-sm">┐ 2.5:3.5</div>
+
+            <div className="relative z-10 text-center pt-2">
+              <span className="text-label-sm font-label-sm text-primary uppercase tracking-widest font-bold">
+                {platform.toUpperCase()} // @{username}
+              </span>
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center justify-center my-auto py-6">
+              <div className="relative w-24 h-24 rounded-full border-2 border-primary-container flex items-center justify-center bg-surface-container-low shadow-[0_0_20px_rgba(222,115,156,0.4)]">
+                <span className="text-stat-metric font-stat-metric text-primary font-bold">
+                  {Math.round(progress)}%
+                </span>
+              </div>
+              <div className="text-label-sm font-label-sm text-tertiary tracking-wider mt-3 uppercase font-semibold">
+                {STEPS[stepIndex]}
+              </div>
+            </div>
+
+            <div className="relative z-10 border-t border-outline-variant pt-2 flex justify-between items-center text-[9px] font-label-sm text-outline">
+              <span>HASH: 0x9F4A...</span>
+              <span className="text-primary font-bold">VERIFIED</span>
+            </div>
           </div>
         </div>
 
-        {/* Terminal Telemetry Log Lines */}
-        <div className="mt-6 p-3.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 font-code text-[11px] text-on-surface-variant space-y-1 max-w-xl mx-auto">
-          <div className="flex items-center justify-between text-tertiary-fixed">
-            <span>[ORACLE] Fetching public API payload for @{username}</span>
-            <span className="text-emerald-400 font-semibold">OK</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span>[ENGINE] Normalizing {platform.toUpperCase()} performance statistics</span>
-            <span>{Math.min(100, Math.round(progress * 0.9))}%</span>
-          </div>
-          <div className="flex items-center justify-between text-primary">
-            <span>[SYNTHESIS] Calculating UXIE Power score and Rarity seal</span>
-            <span>PROCESSING</span>
+        {/* Right Module: Live Terminal Diagnostics Output */}
+        <div className="lg:col-span-4 order-3 flex flex-col gap-4">
+          <div className="bg-surface-container-lowest border border-outline-variant p-4 rounded-DEFAULT space-y-2">
+            <div className="flex items-center justify-between text-label-sm font-label-sm border-b border-outline-variant/60 pb-2">
+              <span className="text-tertiary-fixed uppercase font-bold">LIVE TELEMETRY STREAM</span>
+              <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+            </div>
+
+            <div className="font-label-sm text-[11px] text-on-surface-variant space-y-1.5 pt-1">
+              <div className="flex justify-between">
+                <span className="text-outline">TARGET HANDLE:</span>
+                <span className="text-tertiary-fixed font-bold">@{username}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-outline">DATA VECTOR:</span>
+                <span className="text-primary font-bold">{platform.toUpperCase()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-outline">CARDS GENERATING:</span>
+                <span className="text-tertiary-fixed font-bold">GRID / ULTIMATE / COURT</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-outline">ENCRYPTION HASH:</span>
+                <span className="text-outline">SHA256: 8e2d...01ca</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
