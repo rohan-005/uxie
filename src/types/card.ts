@@ -12,6 +12,7 @@ export interface CardTemplateInfo {
 
 export interface CardProps {
   profile: PlatformProfile;
+  profileImage?: string;
   className?: string;
   isExporting?: boolean;
 }
