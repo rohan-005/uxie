@@ -2,34 +2,35 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-surface-container-lowest border-t border-outline-variant/30 z-10">
-      <div className="flex flex-col md:flex-row justify-between items-center w-full px-6 lg:px-12 py-8 gap-4">
-        {/* Logo and Copyright Anchor */}
-        <div className="flex flex-col sm:flex-row items-center gap-3">
-          <span className="font-headline text-headline-md font-bold text-on-surface">
-            UXIE
-          </span>
-          <span className="hidden sm:inline text-outline-variant/60">•</span>
-          <span className="text-body-md font-body text-on-surface-variant text-center sm:text-left">
-            © 2026 UXIE. Know your power. Show your progress.
-          </span>
+    <footer className="bg-surface-container-lowest border-t border-outline-variant w-full relative z-10">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full px-gutter-desktop py-8 max-w-[1440px] mx-auto gap-4">
+        {/* Brand & Copyright */}
+        <div className="flex flex-col sm:flex-row items-center gap-space-sm text-center sm:text-left">
+          <span className="text-label-lg font-label-lg tracking-widest text-primary uppercase font-bold">UXIE</span>
+          <span className="hidden sm:inline text-outline">|</span>
+          <p className="text-body-sm font-body-sm text-on-surface-variant">
+            © 2025 UXIE TELEMETRY CORP. ALL RIGHTS RESERVED. KNOW YOUR POWER. SHOW YOUR PROGRESS.
+          </p>
         </div>
 
-        {/* Footer Links */}
-        <nav className="flex flex-wrap items-center justify-center gap-6">
-          <a
-            href="#create"
-            className="text-on-surface-variant hover:text-on-surface text-label-code-sm font-code uppercase transition-colors hover:text-primary"
-          >
-            Create Card
+        {/* Links */}
+        <div className="flex flex-wrap justify-center items-center gap-space-md text-label-sm font-label-sm">
+          <a className="text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">
+            Documentation
           </a>
-          <a
-            href="#explore"
-            className="text-on-surface-variant hover:text-on-surface text-label-code-sm font-code uppercase transition-colors hover:text-primary"
-          >
-            Gallery
+          <a className="text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">
+            Cryptographic Verification
           </a>
-        </nav>
+          <a className="text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">
+            Platform Connectors
+          </a>
+          <a className="text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">
+            API Status
+          </a>
+          <a className="text-on-surface-variant hover:text-primary transition-colors duration-150" href="#">
+            Privacy Protocol
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -64,7 +64,7 @@ export const CardActions: React.FC<CardActionsProps> = ({
     <div className="flex flex-col gap-3 relative">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="p-2.5 rounded-lg bg-surface-container-highest border border-primary-container text-tertiary-fixed font-code text-label-code-sm text-center shadow-lg animate-pulse">
+        <div className="p-2.5 rounded bg-surface-container-high border border-primary-container text-tertiary-fixed font-label-sm text-label-sm text-center shadow-lg animate-pulse">
           {toastMessage}
         </div>
       )}
@@ -74,19 +74,19 @@ export const CardActions: React.FC<CardActionsProps> = ({
           type="button"
           onClick={handleDownload}
           disabled={isExporting}
-          className="px-4 py-3 rounded-lg bg-gradient-to-r from-secondary-container to-primary-container text-on-primary font-code text-label-code-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-md disabled:opacity-50"
+          className="px-4 py-3 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:shadow-[0_0_12px_rgba(222,115,156,0.5)] active:scale-[0.98] transition-all disabled:opacity-50 border border-primary-container cursor-pointer"
         >
           <span className="material-symbols-outlined text-[18px]">download</span>
-          {isExporting ? 'Exporting...' : 'Download Card'}
+          {isExporting ? 'EXPORTING...' : 'DOWNLOAD CARD'}
         </button>
 
         <button
           type="button"
           onClick={handleShare}
-          className="px-4 py-3 rounded-lg bg-surface-container border border-outline-variant/60 text-tertiary font-code text-label-code-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:border-primary hover:text-on-surface active:scale-95 transition-all"
+          className="px-4 py-3 rounded bg-surface-container border border-outline-variant text-tertiary-fixed font-label-md text-label-md font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:border-primary hover:text-primary active:scale-[0.98] transition-all cursor-pointer"
         >
           <span className="material-symbols-outlined text-[18px]">share</span>
-          Share Card
+          SHARE CARD
         </button>
       </div>
 
@@ -94,19 +94,19 @@ export const CardActions: React.FC<CardActionsProps> = ({
         <button
           type="button"
           onClick={handleCopyLink}
-          className="px-4 py-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant font-code text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:text-primary hover:border-primary/50 transition-colors"
+          className="px-4 py-2.5 rounded bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider flex items-center justify-center gap-1.5 hover:text-primary hover:border-primary transition-colors cursor-pointer"
         >
           <span className="material-symbols-outlined text-[16px]">link</span>
-          Copy Link
+          COPY LINK
         </button>
 
         <button
           type="button"
           onClick={handleCopyEmbed}
-          className="px-4 py-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant font-code text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 hover:text-primary hover:border-primary/50 transition-colors"
+          className="px-4 py-2.5 rounded bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider flex items-center justify-center gap-1.5 hover:text-primary hover:border-primary transition-colors cursor-pointer"
         >
           <span className="material-symbols-outlined text-[16px]">code</span>
-          Copy Embed Code
+          COPY EMBED CODE
         </button>
       </div>
     </div>
