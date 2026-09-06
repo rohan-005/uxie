@@ -10,6 +10,11 @@ export interface CardTemplateInfo {
   badge: string;
 }
 
+/**
+ * CardProps defines inputs for collectible card rendering.
+ * Avatar images are sourced automatically from public profile metadata
+ * or via the `profileImage` prop. Avatar upload functionality is disabled.
+ */
 export interface CardProps {
   profile: PlatformProfile;
   profileImage?: string;
