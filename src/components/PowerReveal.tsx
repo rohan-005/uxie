@@ -104,7 +104,7 @@ export const PowerReveal: React.FC<PowerRevealProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start justify-center">
           {/* Card Preview Canvas (6 cols) */}
           <div className="lg:col-span-6 flex flex-col items-center justify-center">
-            <div className="w-full max-w-[380px]">
+            <div id="uxie-card-export-target" className="w-full max-w-[380px]">
               <CardRenderer templateId={selectedTemplate} profile={profile} />
             </div>
             <p className="text-label-sm font-label-sm text-outline mt-4 flex items-center gap-1.5">
