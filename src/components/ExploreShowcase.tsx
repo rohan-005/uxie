@@ -17,15 +17,15 @@ const FEATURED_PROFILES: PlatformProfile[] = [
     sourceUrl: 'https://github.com/torvalds',
     isDemoData: false,
     overallPower: 99,
-    rarity: 'MYTHIC',
+    rarity: { name: 'MYTHIC', color: '#ffb0ca', bgGradient: '' },
     rankTitle: 'MYTHIC MAINTAINER',
     stats: {
-      stat1: { name: 'Activity', value: 99, label: 'ACTIVITY', rawValue: '400+ Repos' },
-      stat2: { name: 'Impact', value: 100, label: 'IMPACT', rawValue: '239k Stars' },
-      stat3: { name: 'Consistency', value: 98, label: 'CONSISTENCY', rawValue: '215k Followers' },
-      stat4: { name: 'Open Source', value: 100, label: 'OPEN SOURCE', rawValue: '82k Forks' },
-      stat5: { name: 'Versatility', value: 95, label: 'VERSATILITY', rawValue: 'C/C++' },
-      stat6: { name: 'Collaboration', value: 96, label: 'COLLABORATION', rawValue: 'Global Maintainer' },
+      stat1: { name: 'Activity', value: 99, label: 'ACTIVITY', rawValue: '400+ Repos', score: 99 },
+      stat2: { name: 'Impact', value: 100, label: 'IMPACT', rawValue: '239k Stars', score: 100 },
+      stat3: { name: 'Consistency', value: 98, label: 'CONSISTENCY', rawValue: '215k Followers', score: 98 },
+      stat4: { name: 'Open Source', value: 100, label: 'OPEN SOURCE', rawValue: '82k Forks', score: 100 },
+      stat5: { name: 'Versatility', value: 95, label: 'VERSATILITY', rawValue: 'C/C++', score: 95 },
+      stat6: { name: 'Collaboration', value: 96, label: 'COLLABORATION', rawValue: 'Global Maintainer', score: 96 },
     },
     rawDetails: {},
   },
@@ -38,15 +38,15 @@ const FEATURED_PROFILES: PlatformProfile[] = [
     sourceUrl: 'https://codeforces.com/profile/tourist',
     isDemoData: false,
     overallPower: 98,
-    rarity: 'MYTHIC',
+    rarity: { name: 'MYTHIC', color: '#ffb0ca', bgGradient: '' },
     rankTitle: 'LEGENDARY GRANDMASTER',
     stats: {
-      stat1: { name: 'Problem Solving', value: 98, label: 'PROBLEM SOLVING', rawValue: '3,420 Solved' },
-      stat2: { name: 'Algorithms', value: 100, label: 'ALGORITHMS', rawValue: '3850 ELO' },
-      stat3: { name: 'Contest', value: 100, label: 'CONTEST', rawValue: '3979 Max ELO' },
-      stat4: { name: 'Consistency', value: 95, label: 'CONSISTENCY', rawValue: '210 Contests' },
-      stat5: { name: 'Difficulty', value: 96, label: 'DIFFICULTY', rawValue: '2450 Avg Rating' },
-      stat6: { name: 'Versatility', value: 94, label: 'VERSATILITY', rawValue: '36 Tags' },
+      stat1: { name: 'Problem Solving', value: 98, label: 'PROBLEM SOLVING', rawValue: '3,420 Solved', score: 98 },
+      stat2: { name: 'Algorithms', value: 100, label: 'ALGORITHMS', rawValue: '3850 ELO', score: 100 },
+      stat3: { name: 'Contest', value: 100, label: 'CONTEST', rawValue: '3979 Max ELO', score: 100 },
+      stat4: { name: 'Consistency', value: 95, label: 'CONSISTENCY', rawValue: '210 Contests', score: 95 },
+      stat5: { name: 'Difficulty', value: 96, label: 'DIFFICULTY', rawValue: '2450 Avg Rating', score: 96 },
+      stat6: { name: 'Versatility', value: 94, label: 'VERSATILITY', rawValue: '36 Tags', score: 94 },
     },
     rawDetails: {},
   },
@@ -59,15 +59,15 @@ const FEATURED_PROFILES: PlatformProfile[] = [
     sourceUrl: 'https://leetcode.com/neal_wu/',
     isDemoData: false,
     overallPower: 94,
-    rarity: 'LEGENDARY',
+    rarity: { name: 'LEGENDARY', color: '#ffb0ca', bgGradient: '' },
     rankTitle: 'GUARDIAN ARCHITECT',
     stats: {
-      stat1: { name: 'DSA Mastery', value: 96, label: 'DSA', rawValue: '800 Med / 300 Hard' },
-      stat2: { name: 'Problem Solving', value: 94, label: 'PROBLEM SOLVING', rawValue: '1,450 Solved' },
-      stat3: { name: 'Difficulty', value: 95, label: 'DIFFICULTY', rawValue: '300 Hard Solved' },
-      stat4: { name: 'Consistency', value: 92, label: 'CONSISTENCY', rawValue: '365 Days Streak' },
-      stat5: { name: 'Contest', value: 94, label: 'CONTEST', rawValue: '2488 ELO' },
-      stat6: { name: 'Streak', value: 90, label: 'STREAK', rawValue: '18 Badges' },
+      stat1: { name: 'DSA Mastery', value: 96, label: 'DSA', rawValue: '800 Med / 300 Hard', score: 96 },
+      stat2: { name: 'Problem Solving', value: 94, label: 'PROBLEM SOLVING', rawValue: '1,450 Solved', score: 94 },
+      stat3: { name: 'Difficulty', value: 95, label: 'DIFFICULTY', rawValue: '300 Hard Solved', score: 95 },
+      stat4: { name: 'Consistency', value: 92, label: 'CONSISTENCY', rawValue: '365 Days Streak', score: 92 },
+      stat5: { name: 'Contest', value: 94, label: 'CONTEST', rawValue: '2488 ELO', score: 94 },
+      stat6: { name: 'Streak', value: 90, label: 'STREAK', rawValue: '18 Badges', score: 90 },
     },
     rawDetails: {},
   },
@@ -80,15 +80,15 @@ const FEATURED_PROFILES: PlatformProfile[] = [
     sourceUrl: 'https://github.com/gaearon',
     isDemoData: false,
     overallPower: 92,
-    rarity: 'LEGENDARY',
+    rarity: { name: 'LEGENDARY', color: '#ffb0ca', bgGradient: '' },
     rankTitle: 'LEGENDARY ARCHITECT',
     stats: {
-      stat1: { name: 'Activity', value: 90, label: 'ACTIVITY', rawValue: '280 Repos' },
-      stat2: { name: 'Impact', value: 96, label: 'IMPACT', rawValue: '180k Stars' },
-      stat3: { name: 'Consistency', value: 94, label: 'CONSISTENCY', rawValue: '85k Followers' },
-      stat4: { name: 'Open Source', value: 92, label: 'OPEN SOURCE', rawValue: '45k Forks' },
-      stat5: { name: 'Versatility', value: 88, label: 'VERSATILITY', rawValue: 'JS/TS/React' },
-      stat6: { name: 'Collaboration', value: 90, label: 'COLLABORATION', rawValue: 'React Core' },
+      stat1: { name: 'Activity', value: 90, label: 'ACTIVITY', rawValue: '280 Repos', score: 90 },
+      stat2: { name: 'Impact', value: 96, label: 'IMPACT', rawValue: '180k Stars', score: 96 },
+      stat3: { name: 'Consistency', value: 94, label: 'CONSISTENCY', rawValue: '85k Followers', score: 94 },
+      stat4: { name: 'Open Source', value: 92, label: 'OPEN SOURCE', rawValue: '45k Forks', score: 92 },
+      stat5: { name: 'Versatility', value: 88, label: 'VERSATILITY', rawValue: 'JS/TS/React', score: 88 },
+      stat6: { name: 'Collaboration', value: 90, label: 'COLLABORATION', rawValue: 'React Core', score: 90 },
     },
     rawDetails: {},
   },
@@ -101,15 +101,15 @@ const FEATURED_PROFILES: PlatformProfile[] = [
     sourceUrl: 'https://www.codechef.com/users/gennady',
     isDemoData: false,
     overallPower: 96,
-    rarity: 'MYTHIC',
+    rarity: { name: 'MYTHIC', color: '#ffb0ca', bgGradient: '' },
     rankTitle: 'CODECHEF 7★ GRANDMASTER',
     stats: {
-      stat1: { name: 'Problem Solving', value: 96, label: 'PROBLEM SOLVING', rawValue: '1,850 Solved' },
-      stat2: { name: 'Contest Rating', value: 98, label: 'CONTEST', rawValue: '2850 (7★)' },
-      stat3: { name: 'Consistency', value: 94, label: 'CONSISTENCY', rawValue: '140 Contests' },
-      stat4: { name: 'Difficulty', value: 96, label: 'DIFFICULTY', rawValue: '2850 Rating' },
-      stat5: { name: 'Versatility', value: 95, label: 'VERSATILITY', rawValue: 'Cook-off Master' },
-      stat6: { name: 'Global Rank', value: 100, label: 'RANKING', rawValue: '#1 Global' },
+      stat1: { name: 'Problem Solving', value: 96, label: 'PROBLEM SOLVING', rawValue: '1,850 Solved', score: 96 },
+      stat2: { name: 'Contest Rating', value: 98, label: 'CONTEST', rawValue: '2850 (7★)', score: 98 },
+      stat3: { name: 'Consistency', value: 94, label: 'CONSISTENCY', rawValue: '140 Contests', score: 94 },
+      stat4: { name: 'Difficulty', value: 96, label: 'DIFFICULTY', rawValue: '2850 Rating', score: 96 },
+      stat5: { name: 'Versatility', value: 95, label: 'VERSATILITY', rawValue: 'Cook-off Master', score: 95 },
+      stat6: { name: 'Global Rank', value: 100, label: 'RANKING', rawValue: '#1 Global', score: 100 },
     },
     rawDetails: {},
   },
@@ -129,90 +129,105 @@ export const ExploreShowcase: React.FC<ExploreShowcaseProps> = ({ onSelectDevelo
   });
 
   return (
-    <div className="w-full px-6 lg:px-12 py-10 relative z-10">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-outline-variant/20">
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-sm bg-primary animate-pulse"></span>
-            <span className="font-code text-label-code-sm text-tertiary uppercase tracking-widest">
-              GLOBAL TELEMETRY LEDGER
+    <main className="flex-1 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-gutter-desktop py-8 flex flex-col gap-8">
+      {/* Vault Header Dossier */}
+      <div className="border-b border-outline-variant pb-6 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 bg-surface-container border-l-2 border-primary-container text-tertiary-fixed font-label-sm text-label-sm">
+              ARCHIVE // SECTOR-07
+            </span>
+            <span className="text-label-sm font-label-sm text-outline tracking-wider">
+              SYNC STATUS: LIVE TELEMETRY
             </span>
           </div>
-          <h1 className="font-headline text-headline-lg md:text-display-hero font-bold tracking-tight text-tertiary-fixed">
-            EXPLORE POWER CARDS
+          <h1 className="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface tracking-tight uppercase">
+            COMMUNITY POWER VAULT
           </h1>
-          <p className="font-body text-body-lg text-on-surface-variant max-w-2xl mt-2">
-            Discover top-ranked developers across GitHub, Codeforces, LeetCode, and CodeChef.
+          <p className="text-body-md font-body-md text-on-surface-variant max-w-2xl">
+            Explore live Power Cards forged by engineers across GitHub, LeetCode, Codeforces, and CodeChef.
           </p>
         </div>
 
-        {/* Global Stats Counter */}
-        <div className="flex items-center gap-6 bg-surface-container-low/70 border border-outline-variant/30 p-4 rounded-xl backdrop-blur-md">
-          <div>
-            <div className="font-code text-label-code-sm text-on-surface-variant uppercase">Total Minted</div>
-            <div className="font-stat-counter text-stat-counter text-tertiary-fixed">50,000+</div>
+        {/* Quick Telemetry Stats */}
+        <div className="flex items-center gap-4 text-label-sm font-label-sm text-on-surface-variant bg-surface-container-low px-4 py-2 border border-outline-variant">
+          <div className="flex flex-col">
+            <span className="text-outline">FORGED CARDS</span>
+            <span className="text-primary font-bold text-label-lg font-label-lg">148,924</span>
           </div>
-          <div className="w-px h-8 bg-outline-variant/30"></div>
-          <div>
-            <div className="font-code text-label-code-sm text-on-surface-variant uppercase">Proof Accuracy</div>
-            <div className="font-stat-counter text-stat-counter text-primary">99.8%</div>
+          <div className="w-px h-6 bg-outline-variant"></div>
+          <div className="flex flex-col">
+            <span className="text-outline">TOP PROTOCOL</span>
+            <span className="text-tertiary-fixed font-bold text-label-lg font-label-lg">CF:2944</span>
+          </div>
+          <div className="w-px h-6 bg-outline-variant"></div>
+          <div className="flex flex-col">
+            <span className="text-outline">AVG IMPACT</span>
+            <span className="text-on-surface font-bold text-label-lg font-label-lg">84.2</span>
           </div>
         </div>
       </div>
 
-      {/* Filter Pills & Search */}
-      <div className="py-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-2">
-          {['all', 'github', 'codeforces', 'leetcode', 'codechef'].map((p) => (
-            <button
-              key={p}
-              onClick={() => setFilterPlatform(p)}
-              className={`px-3.5 py-1.5 rounded-lg font-code text-label-code-sm uppercase tracking-wider transition-all ${
-                filterPlatform === p
-                  ? 'bg-primary-container text-on-primary-container font-bold shadow-md'
-                  : 'bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary-container'
-              }`}
-            >
-              {p === 'all' ? 'All Platforms' : p}
-            </button>
-          ))}
-        </div>
+      {/* Filter & Sort Control Deck */}
+      <section className="bg-surface-container-low border border-outline-variant p-4 flex flex-col gap-4 rounded">
+        <div className="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
+          {/* Platform Filters */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-label-sm font-label-sm text-outline uppercase mr-2 flex items-center gap-1">
+              <span className="material-symbols-outlined text-[14px]">filter_alt</span> Platform:
+            </span>
+            {['all', 'github', 'codeforces', 'leetcode', 'codechef'].map((p) => (
+              <button
+                key={p}
+                type="button"
+                onClick={() => setFilterPlatform(p)}
+                className={`px-3 py-1 text-label-md font-label-md rounded border transition-all cursor-pointer ${
+                  filterPlatform === p
+                    ? 'bg-primary-container text-on-primary-container font-semibold border-primary-container'
+                    : 'bg-surface-container text-on-surface-variant hover:text-on-surface hover:border-outline border-outline-variant'
+                }`}
+              >
+                {p === 'all' ? 'All Platforms' : p.toUpperCase()}
+              </button>
+            ))}
+          </div>
 
-        {/* Search */}
-        <div className="relative min-w-[280px]">
-          <span className="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-lg">
-            search
-          </span>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search handle or developer..."
-            className="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg pl-9 pr-4 py-2 font-code text-label-code-sm text-tertiary placeholder:text-outline-variant focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all"
-          />
+          {/* Search */}
+          <div className="relative min-w-[240px]">
+            <span className="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[16px]">
+              search
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search developer handle..."
+              className="w-full bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md pl-8 pr-3 py-1.5 rounded focus:border-primary-container focus:outline-none placeholder:text-outline"
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Cards Grid - Responsive Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pt-4 pb-12">
+      {/* Community Cards Showcase Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-4">
         {filtered.map((prof) => (
           <div
             key={prof.username}
-            className="flex flex-col items-center p-4 rounded-2xl bg-surface-container-low/60 border border-outline-variant/30 hover:border-primary-container/60 transition-all duration-300 hover:-translate-y-1"
+            className="flex flex-col items-center p-4 rounded-lg bg-surface-container-low border border-outline-variant hover:border-primary-container transition-all duration-300 group"
           >
-            <CardRenderer templateId="template1" profile={prof} className="scale-[0.95] origin-top" />
+            <CardRenderer templateId="template1" profile={prof} className="scale-[0.98] origin-top" />
 
             <button
+              type="button"
               onClick={() => onSelectDeveloper(prof.platform, prof.username)}
-              className="mt-3 w-full py-2.5 px-4 rounded-lg bg-surface-container border border-primary-container/40 text-primary font-code text-label-code-sm uppercase font-bold hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2"
+              className="mt-4 w-full py-2.5 px-4 rounded bg-primary-container text-on-primary-container font-label-md text-label-md font-bold uppercase tracking-wider hover:shadow-[0_0_12px_rgba(222,115,156,0.5)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer border border-primary-container"
             >
               <span className="material-symbols-outlined text-[16px]">bolt</span>
-              Forge @{prof.username} Card
+              <span>FORGE @{prof.username.toUpperCase()}</span>
             </button>
           </div>
         ))}
       </div>
-    </div>
+    </main>
   );
 };
